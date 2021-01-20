@@ -1,12 +1,76 @@
-§<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='../icons/pageImage.png' type='image/x-icon'/ >
     <title>KeyWords</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Hello Ksenya!</h2>
+    <div class="welcomeText">
+        <h1><img id="img" src="../icons/hiIcon.png" alt="Hello icon" width="140" height="140"><center>Hello Kseniya! Let's work :)</center></h1>
+    </div>
+    <div class="titleText" id='wordAmount'>
+        <h4>Title text</h4>
+        <textarea name="Title text" id="titleText" cols="30" rows="3" maxlength="50" placeholder="Insert Title text here" tabindex="1"></textarea>
+        <div id="amountArea">
+            <span class="wordsAmount">
+                Words amount: 
+            </span>
+            <div id="titleWordsAmount">0</div>
+        </div>
+        <div class="characterAmount" id="amountArea">
+            Characters amount:
+        </div>
+            <div id="titleCharacters">
+                out of 30
+            </div>
+        <hr>
+    </div>
+    <div class="subTitleText" id='wordAmount'>
+        <h4>SubTitle text</h4>
+        <textarea name="SubTitle text" id="subTitleText" cols="30" rows="3" maxlength="50" placeholder="Insert SubTitle text here" tabindex="2"></textarea>
+        <div id="amountArea">
+            <span class="wordsAmount">
+                Words amount:
+            </span>
+            <div id="SubTitleWordsAmount">0</div>
+        </div>
+        <div class="characterAmount" id="amountArea">
+            Characters amount:
+        </div>
+        <div id="SubTitleCharacters">
+            out of 30
+        </div>
+        <hr>
+    </div>
+    <div class="keyWords" id='wordAmount'>
+        <h4>KeyWords</h4>
+        <textarea name="KeyWords" id="keyWords" cols="30" rows="5" maxlength="150" placeholder="Insert KeyWords here" tabindex="3"></textarea>
+        <div id="amountArea">
+            <span class="wordsAmount">
+                Words amount:
+            </span>
+            <div id="keyWordsAmount">0</div>
+        </div>
+        <div class="characterAmount" id="amountArea">
+            Characters amount:
+        </div>
+        <div id="keyWordcharacters">
+            out of 100
+        </div>
+        <hr>
+    </div>
+
+
 </body>
+<!-- <script>
+    document.getElementById('titleText').addEventListener('input', function () {
+    let text = this.value;
+    count = text.trim().replace(/\s+/g, ' ').split(' ').length;
+    document.getElementById('symbolsAmount').textContent = "Symbols amount: " + count;
+})
+</script> -->
 <script src="./index.js"></script>
 </html>
