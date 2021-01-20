@@ -1,8 +1,8 @@
 
 let titleTextWordsAmount;
 let titleTextCharactersAmount;
-let SubtitleTextWordsAmount;
-let SubtitleTextCharactersAmount;
+let subtitleTextWordsAmount;
+let subtitleTextCharactersAmount;
 let keyWordsAmount;
 let keyWordsCharactersAmount;
 
