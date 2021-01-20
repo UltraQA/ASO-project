@@ -29,7 +29,7 @@ titleTextCharactersAmount = document.getElementById('titleText').addEventListene
     }
 })
 
-SubtitleTextWordsAmount = document.getElementById('subTitleText').addEventListener('input', () => {
+subtitleTextWordsAmount = document.getElementById('subTitleText').addEventListener('input', () => {
     let text = document.getElementById('subTitleText').value;
     let count = 0;
     let split = text.split(' ');
@@ -41,7 +41,7 @@ SubtitleTextWordsAmount = document.getElementById('subTitleText').addEventListen
     document.getElementById('SubTitleWordsAmount').innerHTML = count;
 })
 
-SubtitleTextCharactersAmount = document.getElementById('subTitleText').addEventListener('input', ()=>{
+subtitleTextCharactersAmount = document.getElementById('subTitleText').addEventListener('input', ()=>{
     let maxLength = 30;
     let textlength = document.getElementById('subTitleText').value.length;
     
