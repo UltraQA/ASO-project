@@ -1,0 +1,66 @@
+body {
+  background-color: #eeeeee;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+img {
+  margin: 10px;
+  align-items: center;
+}
+
+.welcomeText {
+  background-image: url(../icons/welcomImg.png);
+  background-color: #707070;
+  border-radius: 25px;
+}
+
+h1 {
+  color: #ffdf6c;
+  text-align: center;
+}
+
+h4 {
+  color: #607d8b;
+  text-align: left;
+}
+
+#titleWordsAmount {
+  color: black;
+  display: inline;
+  position: center;
+}
+
+#SubTitleWordsAmount {
+  color: black;
+  display: inline;
+}
+
+#keyWordsAmount {
+  color: black;
+  display: inline;
+}
+
+textarea {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fbfcfc;
+}
+
+#amountArea {
+  color: #ff5722;
+}
+
+#titleCharacters {
+  color: black;
+  display: inline;
+}
+
+#SubTitleCharacters {
+  color: black;
+  display: inline;
+}
+
+#keyWordcharacters {
+  color: black;
+  display: inline;
+}
