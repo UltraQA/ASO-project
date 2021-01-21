@@ -55,7 +55,7 @@ subtitleTextCharactersAmount = document.getElementById('subTitleText').addEventL
 keyWordsAmount = document.getElementById('keyWords').addEventListener('input', () => {
     let text = document.getElementById('keyWords').value;
     let count = 0;
-    let split = text.split(',');
+    let split = text.split(/\s|\,/);
     for (let i = 0; i < split.length; i++){
         if (split[i] != '' ){
             count ++;
