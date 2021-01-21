@@ -64,3 +64,12 @@ textarea {
   color: black;
   display: inline;
 }
+#titleText {
+  width: 20%;
+}
+#subTitleText {
+  width: 20%;
+}
+#keyWords {
+  width: 60%;
+}
