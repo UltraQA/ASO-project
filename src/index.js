@@ -23,7 +23,8 @@ titleTextCharactersAmount = document.getElementById('titleText').addEventListene
     let textlength = document.getElementById('titleText').value.length;
     
     if(textlength > maxLength){
-        document.getElementById("titleCharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+' characters</span>';
+        document.getElementById("titleCharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+' </span>';
+        // document.getElementById("titleTextWords").innerHTML = '<h4 id="titleTextWords" style="color: red;">Title text</h4>';
     }else{
         document.getElementById("titleCharacters").innerHTML = textlength+' out of '+maxLength;
     }
@@ -46,7 +47,7 @@ subtitleTextCharactersAmount = document.getElementById('subTitleText').addEventL
     let textlength = document.getElementById('subTitleText').value.length;
     
     if(textlength > maxLength){
-        document.getElementById("SubTitleCharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+' characters</span>';
+        document.getElementById("SubTitleCharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+'</span>';
     }else{
         document.getElementById("SubTitleCharacters").innerHTML = textlength+' out of '+maxLength;
     }
@@ -69,7 +70,7 @@ keyWordsCharactersAmount = document.getElementById('keyWords').addEventListener(
     let textlength = document.getElementById('keyWords').value.length;
     
     if(textlength > maxLength){
-        document.getElementById("keyWordcharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+' characters</span>';
+        document.getElementById("keyWordcharacters").innerHTML = '<span style="background-color: #F48FB1;">'+textlength+' out of '+maxLength+'</span>';
     }else{
         document.getElementById("keyWordcharacters").innerHTML = textlength+' out of '+maxLength;
     }
