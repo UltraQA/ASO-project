@@ -17,6 +17,7 @@ img {
 h1 {
   color: #ffdf6c;
   text-align: center;
+  /* min-width: 440px; */
 }
 
 h4 {

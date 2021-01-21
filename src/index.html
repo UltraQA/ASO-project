@@ -7,61 +7,64 @@
     <title>KeyWords</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="welcomeText">
-        <h1><img id="img" src="../icons/hiIcon.png" alt="Hello icon" width="140" height="140"><center>Hello Kseniya! Let's work :)</center></h1>
+<body> 
+    <div id="page">
+        <div class="welcomeText">
+            <h1><img id="img" src="../icons/hiIcon.png" alt="Hello icon" width="140" height="140"><center>Hello Kseniya! Let's work :)</center></h1>
+        </div>
+        <div class="titleText" id='wordAmount'>
+            <h4 id="titleTextWords">Title text</h4>
+            <textarea name="Title text" id="titleText" rows="3" maxlength="50" placeholder="Insert Title text here" tabindex="1"></textarea>
+            <div id="amountArea">
+                <span class="wordsAmount">
+                    Words amount: 
+                </span>
+                <div id="titleWordsAmount">0</div>
+            </div>
+            <div class="characterAmount" id="amountArea">
+                Characters amount:
+                <span id="titleCharacters">
+                    out of 30
+                </span>
+            </div>
+            <hr>
+        </div>
+        <div class="subTitleText" id='wordAmount'>
+            <h4>SubTitle text</h4>
+            <textarea name="SubTitle text" id="subTitleText" rows="3" maxlength="50" placeholder="Insert SubTitle text here" tabindex="2"></textarea>
+            <div id="amountArea">
+                <span class="wordsAmount">
+                    Words amount:
+                </span>
+                <div id="SubTitleWordsAmount">0</div>
+            </div>
+            <div class="characterAmount" id="amountArea">
+                Characters amount:
+                <span id="SubTitleCharacters">
+                    out of 30
+                </span>
+            </div>
+            <hr>
+        </div>
+        <div class="keyWords" id='wordAmount'>
+            <h4>KeyWords</h4>
+            <textarea name="KeyWords" id="keyWords" rows="5" maxlength="150" placeholder="Insert KeyWords here" tabindex="3"></textarea>
+            <div id="amountArea">
+                <span class="wordsAmount">
+                    Words amount:
+                </span>
+                <div id="keyWordsAmount">0</div>
+            </div>
+            <div class="characterAmount" id="amountArea">
+                Characters amount:
+                <span id="keyWordcharacters">
+                    out of 100
+                </span>
+            </div>
+            <hr>
+        </div>
     </div>
-    <div class="titleText" id='wordAmount'>
-        <h4 id="titleTextWords">Title text</h4>
-        <textarea name="Title text" id="titleText" rows="3" maxlength="50" placeholder="Insert Title text here" tabindex="1"></textarea>
-        <div id="amountArea">
-            <span class="wordsAmount">
-                Words amount: 
-            </span>
-            <div id="titleWordsAmount">0</div>
-        </div>
-        <div class="characterAmount" id="amountArea">
-            Characters amount:
-            <span id="titleCharacters">
-                out of 30
-            </span>
-        </div>
-        <hr>
-    </div>
-    <div class="subTitleText" id='wordAmount'>
-        <h4>SubTitle text</h4>
-        <textarea name="SubTitle text" id="subTitleText" rows="3" maxlength="50" placeholder="Insert SubTitle text here" tabindex="2"></textarea>
-        <div id="amountArea">
-            <span class="wordsAmount">
-                Words amount:
-            </span>
-            <div id="SubTitleWordsAmount">0</div>
-        </div>
-        <div class="characterAmount" id="amountArea">
-            Characters amount:
-            <span id="SubTitleCharacters">
-                out of 30
-            </span>
-        </div>
-        <hr>
-    </div>
-    <div class="keyWords" id='wordAmount'>
-        <h4>KeyWords</h4>
-        <textarea name="KeyWords" id="keyWords" rows="5" maxlength="150" placeholder="Insert KeyWords here" tabindex="3"></textarea>
-        <div id="amountArea">
-            <span class="wordsAmount">
-                Words amount:
-            </span>
-            <div id="keyWordsAmount">0</div>
-        </div>
-        <div class="characterAmount" id="amountArea">
-            Characters amount:
-            <span id="keyWordcharacters">
-                out of 100
-            </span>
-        </div>
-        <hr>
-    </div>
+    
 
 
 </body>
