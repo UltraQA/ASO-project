@@ -1,12 +1,12 @@
-let titleTextWordsAmount;
-let titleTextCharactersAmount;
-let subtitleTextWordsAmount;
-let subtitleTextCharactersAmount;
-let keyWordsAmount;
-let keyWordsCharactersAmount;
-let allTextFromAllTextArea;
+const titleTextWordsAmount = document.getElementById('titleText');
+const titleTextCharactersAmount = document.getElementById('titleText');
+const subtitleTextWordsAmount = document.getElementById('subTitleText');
+const subtitleTextCharactersAmount = document.getElementById('subTitleText');
+const keyWordsAmount = document.getElementById('keyWords');
+const keyWordsCharactersAmount = document.getElementById('keyWords');
+const allTextFromAllTextArea = document.getElementById('page');
 
-titleTextWordsAmount = document.getElementById('titleText').addEventListener('input', () => {
+titleTextWordsAmount.addEventListener('input', () => {
     let text = document.getElementById('titleText').value;
     let count = 0;
     let split = text.split(' ');
@@ -18,7 +18,7 @@ titleTextWordsAmount = document.getElementById('titleText').addEventListener('in
     document.getElementById('titleWordsAmount').innerHTML = count;
 })
 
-titleTextCharactersAmount = document.getElementById('titleText').addEventListener('input', ()=>{
+titleTextCharactersAmount.addEventListener('input', ()=>{
     let maxLength = 30;
     let textlength = document.getElementById('titleText').value.length;
     
@@ -32,7 +32,7 @@ titleTextCharactersAmount = document.getElementById('titleText').addEventListene
     }
 })
 
-subtitleTextWordsAmount = document.getElementById('subTitleText').addEventListener('input', () => {
+subtitleTextWordsAmount.addEventListener('input', () => {
     let text = document.getElementById('subTitleText').value;
     let count = 0;
     let split = text.split(' ');
@@ -44,7 +44,7 @@ subtitleTextWordsAmount = document.getElementById('subTitleText').addEventListen
     document.getElementById('SubTitleWordsAmount').innerHTML = count;
 })
 
-subtitleTextCharactersAmount = document.getElementById('subTitleText').addEventListener('input', ()=>{
+subtitleTextCharactersAmount.addEventListener('input', ()=>{
     let maxLength = 30;
     let textlength = document.getElementById('subTitleText').value.length;
     
@@ -57,7 +57,7 @@ subtitleTextCharactersAmount = document.getElementById('subTitleText').addEventL
     }
 })
 
-keyWordsAmount = document.getElementById('keyWords').addEventListener('input', () => {
+keyWordsAmount.addEventListener('input', () => {
     let text = document.getElementById('keyWords').value;
     let count = 0;
     let split = text.split(/\s|\,/);
@@ -69,7 +69,7 @@ keyWordsAmount = document.getElementById('keyWords').addEventListener('input', (
     document.getElementById('keyWordsAmount').innerHTML = count;
 })
 
-keyWordsCharactersAmount = document.getElementById('keyWords').addEventListener('input', ()=>{
+keyWordsCharactersAmount.addEventListener('input', ()=>{
     let maxLength = 100;
     let textlength = document.getElementById('keyWords').value.length;
     
@@ -82,27 +82,45 @@ keyWordsCharactersAmount = document.getElementById('keyWords').addEventListener(
     }
 })
 
-allTextFromAllTextArea = document.getElementById('page').addEventListener('input', () => {
+allTextFromAllTextArea.addEventListener('input', () => {
     let titleTextArea =  document.getElementById('titleText').value;
     let subTitleTextArea = document.getElementById('subTitleText').value;
     let keyWordsTextArea = document.getElementById('keyWords').value;
-    let allTextArea = titleTextArea + subTitleTextArea + keyWordsTextArea;
+    let allTextArea = titleTextArea + " " +  subTitleTextArea + " " +  keyWordsTextArea;
+    //If all text areas are filled - then we join all texts split them and store in finalString array
     if (titleTextArea.length > 0 && subTitleTextArea.length > 0 && keyWordsTextArea.length > 0) {
-        // console.log('%c%s',
-        // 'color: white; background: #f44336; font-size: 16px;',`Here is Title Text: ${titleTextArea}`);
-        // console.log('%c%s',
-        // 'color: white; background: #f44336; font-size: 16px;',`Here is subTitleText Text: ${subTitleTextArea}`);
-        // console.log('%c%s',
-        // 'color: white; background: #f44336; font-size: 16px;',`Here is keyWords Text: ${keyWordsTextArea}`);
-        console.log(`Text from ALL textareas: ${titleTextArea} ${subTitleTextArea} ${keyWordsTextArea}`);
-        console.log(JSON.stringify(allTextArea));
-    }
+        let finalString = JSON.stringify(allTextArea);
+        console.log(finalString);
 
-    
+            function splitString(stringToSplit, separator) {
+                 let arrayOfStrings = stringToSplit.split(separator);
+                    console.log('%c%s',
+                    'color: white; background: #f44336; font-size: 16px;','Array contains ' + arrayOfStrings.length + ' words: ' + arrayOfStrings.join(' / '));
+                }
+
+        let titleString = titleTextWordsAmount.value;
+        let SubTitleString = subtitleTextWordsAmount.value;
+        let keyWordsString = keyWordsAmount.value;
+        let allStrings = titleString + " " + SubTitleString + " " + keyWordsString;
+        let regEx = (/\s|\,/);
+        splitString(allStrings, regEx);
+        //replace all spaces to ','
+        let newString = finalString.replace(/\s|\,/gi,",")
+        console.log(newString);
+        //added new empty Array 
+        let arr = [];
+        let newArr = arr.push(newString)
+        // arr.push = newString;
+        console.log(arr);
+        
+    }
 });
 
 
-
+// stringArray = function () {
+//     console.log(`stringArray is :  ${allTextFromAllTextArea.value}`);
+// }
+// stringArray();
 
 // module.exports = {
 //      titleTextWordsAmount,
