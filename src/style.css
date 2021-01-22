@@ -1,5 +1,6 @@
-body {
-  background-color: #eeeeee;
+html {
+  height: 100%;
+  background: linear-gradient(45deg, #fafafa, #b0bec5);
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -17,12 +18,17 @@ img {
 h1 {
   color: #ffdf6c;
   text-align: center;
+  font-size: 3.2em;
+  font-family: "Audiowide", sans-serif;
   /* min-width: 440px; */
 }
 
-h4 {
-  color: #607d8b;
+#h4 {
+  color: #155c9ec7;
+  font-size: 1.875em;
   text-align: left;
+  margin: 10px;
+  /* text-shadow: 2px 2px 5px red; */
 }
 
 #titleWordsAmount {
@@ -45,6 +51,7 @@ textarea {
   padding: 10px;
   border-radius: 15px;
   background-color: #fbfcfc;
+  margin-bottom: 10px;
 }
 
 #amountArea {
