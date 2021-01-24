@@ -16,7 +16,7 @@
             <h4 id="h4">Title text</h4>
             <textarea name="Title text" id="titleText" class="inputText" rows="3" maxlength="50" placeholder="Insert Title text here" tabindex="1" ></textarea>
             <div id="amountArea">
-                <span class="wordsAmount">
+                <span class="textField">
                     Words amount: 
                 </span>
                 <div id="titleWordsAmount">0</div>
@@ -33,7 +33,7 @@
             <h4 id="h4">SubTitle text</h4>
             <textarea name="SubTitle text" id="subTitleText" class="inputText" rows="3" maxlength="50" placeholder="Insert SubTitle text here" tabindex="2"></textarea>
             <div id="amountArea">
-                <span class="wordsAmount">
+                <span class="textField">
                     Words amount:
                 </span>
                 <div id="SubTitleWordsAmount">0</div>
@@ -50,7 +50,7 @@
             <h4 id="h4">KeyWords</h4>
             <textarea name="KeyWords" id="keyWords" class="inputText" rows="5" maxlength="150" placeholder="Insert KeyWords here" tabindex="3"></textarea>
             <div id="amountArea">
-                <span class="wordsAmount">
+                <span class="textField">
                     Words amount:
                 </span>
                 <div id="keyWordsAmount">0</div>
@@ -62,17 +62,16 @@
                 </span>
             </div>
         </div>
+        <div class="Duplicates">
+            Duplicates: 
+            <span id="Duplicates" class="textField">
+                 
+            </span>
+        </div>
     </div>
     
 
 
 </body>
-<!-- <script>
-    document.getElementById('titleText').addEventListener('input', function () {
-    let text = this.value;
-    count = text.trim().replace(/\s+/g, ' ').split(' ').length;
-    document.getElementById('symbolsAmount').textContent = "Symbols amount: " + count;
-})
-</script> -->
 <script src="./index.js"></script>
 </html>
