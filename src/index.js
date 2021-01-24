@@ -122,6 +122,17 @@ allTextFromAllTextArea.addEventListener("input", () => {
     keyWordsTextArea.length > 0
   ) {
     let uniqueItems = 0;
+    let allStrings =
+      titleTextWordsAmount.value +
+      " " +
+      subtitleTextWordsAmount.value +
+      " " +
+      keyWordsAmount.value;
+    let regEx = /\s|\,/;
+    //replace all spaces from income text to ','
+    let newString = allTextArea.replace(/\s|\,/gi, ",");
+    let arr = newString.toLowerCase().split(",");
+
     function splitString(stringToSplit, separator) {
       let arrayOfStrings = stringToSplit.split(separator);
       console.log(
@@ -133,17 +144,7 @@ allTextFromAllTextArea.addEventListener("input", () => {
           arrayOfStrings.join(" / ")
       );
     }
-    let allStrings =
-      titleTextWordsAmount.value +
-      " " +
-      subtitleTextWordsAmount.value +
-      " " +
-      keyWordsAmount.value;
-    let regEx = /\s|\,/;
     splitString(allStrings, regEx);
-    //replace all spaces from income text to ','
-    let newString = allTextArea.replace(/\s|\,/gi, ",");
-    let arr = newString.toLowerCase().split(",");
     //trying to find non-unique items
     uniqueItems = arr.filter((item, index) => {
       return arr.indexOf(item) !== index;
