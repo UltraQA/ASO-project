@@ -36,8 +36,7 @@ titleTextCharactersAmount.addEventListener("input", () => {
       `Title length is ${textlength}/30`
     );
   } else {
-    document.getElementById("titleCharacters").innerHTML =
-      textlength + " out of " + maxLength;
+    document.getElementById("titleCharacters").innerHTML = textlength + " out of " + maxLength;
   }
 });
 
@@ -70,8 +69,7 @@ subtitleTextCharactersAmount.addEventListener("input", () => {
       `Sub-title length is ${textlength}/30`
     );
   } else {
-    document.getElementById("SubTitleCharacters").innerHTML =
-      textlength + " out of " + maxLength;
+    document.getElementById("SubTitleCharacters").innerHTML = textlength + " out of " + maxLength;
   }
 });
 
@@ -104,8 +102,7 @@ keyWordsCharactersAmount.addEventListener("input", () => {
       `keyWords length is ${textlength}/30`
     );
   } else {
-    document.getElementById("keyWordcharacters").innerHTML =
-      textlength + " out of " + maxLength;
+    document.getElementById("keyWordcharacters").innerHTML = textlength + " out of " + maxLength;
   }
 });
 
@@ -113,21 +110,12 @@ allTextFromAllTextArea.addEventListener("input", () => {
   let titleTextArea = document.getElementById("titleText").value;
   let subTitleTextArea = document.getElementById("subTitleText").value;
   let keyWordsTextArea = document.getElementById("keyWords").value;
-  let allTextArea =
-    titleTextArea + " " + subTitleTextArea + " " + keyWordsTextArea;
+  let allTextArea = titleTextArea + " " + subTitleTextArea + " " + keyWordsTextArea;
   //If all text areas are filled - then we join all texts split them and store in finalString array
-  if (
-    titleTextArea.length > 0 &&
-    subTitleTextArea.length > 0 &&
-    keyWordsTextArea.length > 0
-  ) {
+  if (titleTextArea.length > 0 && subTitleTextArea.length > 0 && keyWordsTextArea.length > 0) {
     let uniqueItems = 0;
     let allStrings =
-      titleTextWordsAmount.value +
-      " " +
-      subtitleTextWordsAmount.value +
-      " " +
-      keyWordsAmount.value;
+      titleTextWordsAmount.value + " " + subtitleTextWordsAmount.value + " " + keyWordsAmount.value;
     let regEx = /\s|\,/;
     //replace all spaces from income text to ','
     let newString = allTextArea.replace(/\s|\,/gi, ",");
@@ -138,10 +126,7 @@ allTextFromAllTextArea.addEventListener("input", () => {
       console.log(
         "%c%s",
         "color: white; background: #f44336; font-size: 16px;",
-        "Array contains " +
-          arrayOfStrings.length +
-          " words: " +
-          arrayOfStrings.join(" / ")
+        "Array contains " + arrayOfStrings.length + " words: " + arrayOfStrings.join(" / ")
       );
     }
     splitString(allStrings, regEx);
