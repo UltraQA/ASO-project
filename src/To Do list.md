@@ -13,4 +13,5 @@ ASO project!
    3.2 Split string to the words
    3.3 Put result into some variable
 4. Find among words duplicates.
-5. Show duplicates
+5. Show duplicates.
+6. Highlight duplicates in all text area where they exists.
