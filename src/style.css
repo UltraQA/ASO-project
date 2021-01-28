@@ -22,7 +22,7 @@ h1 {
   color: #ffdf6c;
   text-align: center;
   font-size: 3.2em;
-  font-family: "Audiowide", sans-serif;
+  font-family: 'Audiowide', sans-serif;
   /* min-width: 440px; */
 }
 
@@ -60,6 +60,9 @@ textarea {
 #amountArea {
   color: #ff5722;
 }
+.DuplicatesLine {
+  color: rgb(233, 23, 152);
+}
 
 #titleCharacters {
   color: black;
@@ -83,4 +86,9 @@ textarea {
 }
 #keyWords {
   width: 45%;
+}
+
+mark {
+  background-color: red;
+  color: black;
 }
