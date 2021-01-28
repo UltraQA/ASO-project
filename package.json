@@ -1,0 +1,24 @@
+{
+  "name": "aso-project",
+  "version": "1.0.0",
+  "description": "ASO app for verification Title, Subtiltie texts and Key words",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UltraQA/ASO-project.git"
+  },
+  "keywords": [
+    "ASO",
+    "app",
+    "JS"
+  ],
+  "author": "Andrei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UltraQA/ASO-project/issues"
+  },
+  "homepage": "https://github.com/UltraQA/ASO-project#readme"
+}
