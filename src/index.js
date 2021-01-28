@@ -116,15 +116,6 @@ allTextFromAllTextArea.addEventListener('input', () => {
 });
 
 addNumberToDuplicates.addEventListener('input', () => {
-  // let duplicatesItemsArr = document.getElementById('Duplicates').innerText;
-  // let duplicatesArrNew = duplicatesItemsArr.split(',');
-  // let uniqueItemsInNewArr = 0;
-  // uniqueItemsInNewArr = duplicatesArrNew.filter((item, index) => {
-  //   return duplicatesItemsArr.indexOf(item) !== index;
-  // });
-  // if (document.getElementById('Duplicates').innerText.length > 0) {
-  //   console.log(`Here is an Array from Duplicates: ${uniqueItemsInNewArr}`);
-  // }
   function countDuplicates() {
     //shoud find Array of duplicates elements
     let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
@@ -136,7 +127,8 @@ addNumberToDuplicates.addEventListener('input', () => {
     for (let i = 0; i < newArray.length; i++) {
       if (newArray[i] != current) {
         if (cnt > 0) {
-          console.log(`this item ${current} comes ${cnt} times`);
+          console.log(`${current} ${cnt} times`);
+          document.getElementById('amountDuplicatesItems').innerHTML = `<span style="font-size: 24px; color: black">${current} (${cnt})`;
         }
         current = newArray[i];
         cnt = 1;
@@ -145,19 +137,11 @@ addNumberToDuplicates.addEventListener('input', () => {
       }
     }
     if (cnt > 0) {
-      console.log(`item ${current} comes ${cnt} times`);
+      console.log(`${current} (${cnt}) times`);
+      document.getElementById('amountDuplicatesItems').innerHTML = `<span style="font-size: 24px; color: black">${current} (${cnt})`;
     }
   }
-  if (document.getElementById('Duplicates').innerText.length) {
+  if (document.getElementById('Duplicates').innerText.length > 0) {
     countDuplicates();
   }
 });
-
-// module.exports = {
-//      titleTextWordsAmount,
-//      titleTextCharactersAmount,
-//      subtitleTextWordsAmount,
-//      subtitleTextCharactersAmount,
-//      keyWordsAmount,
-//      keyWordsCharactersAmount
-// };
