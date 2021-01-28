@@ -4,33 +4,20 @@
 //     subtitleTextCharactersAmount,
 //     keyWordsAmount,
 //     keyWordsCharactersAmount}  from "../src/index.js"
-const finalString = document.getElementById("wordAmount");
-finalString.addEventListener("input", () => {
-  function splitString(stringToSplit, separator) {
-    let arrayOfStrings = stringToSplit.split(separator);
 
-    // console.log('Original string: "' + stringToSplit + '"');
-    // console.log('Separator: "' + separator + '"');
-    console.log(
-      "%c%s",
-      "color: white; background: #f44336; font-size: 16px;",
-      "Array contains " +
-        arrayOfStrings.length +
-        " words: " +
-        arrayOfStrings.join(" / ")
-    );
+//Find and highlight duplicates in text
+const opar = document.getElementById('titleText').innerHTML;
+
+function highlight() {
+  const inputText = document.getElementById('titleText'); //inputText from Title textarea
+  const search = document.getElementById('Duplicates').value; // text from title input textarea
+  search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+
+  let re = new RegExp(search, 'g');
+  let m;
+  if (search.length > 0) {
+    inputText.innerHTML = opar.replace(re, `<mark>$&</mark>`);
+  } else {
+    inputText.innerHTML = opar;
   }
-  let titleString = document.getElementById("titleText").value;
-  let SubTitleString = document.getElementById("subTitleText").value;
-  let keyWordsString = document.getElementById("keyWords").value;
-  let allStrings = titleString + " " + SubTitleString + " " + keyWordsString;
-
-  //   var space = ' ';
-  //   var comma = ',';
-  let regEx = /\s|\,/;
-
-  //   splitString(titleString, regEx);
-  //   splitString(SubTitleString, regEx);
-  //   splitString(keyWordsString, regEx);
-  splitString(allStrings, regEx);
-});
+}
