@@ -5,7 +5,7 @@ const subtitleTextCharactersAmount = document.getElementById('subTitleText');
 const keyWordsAmount = document.getElementById('keyWords');
 const keyWordsCharactersAmount = document.getElementById('keyWords');
 const allTextFromAllTextArea = document.getElementById('page');
-const searchDuplicates = document.getElementById('page');
+const addNumberToDuplicates = document.getElementById('page');
 
 titleTextWordsAmount.addEventListener('input', () => {
   let text = document.getElementById('titleText').value;
@@ -115,22 +115,41 @@ allTextFromAllTextArea.addEventListener('input', () => {
   }
 });
 
-searchDuplicates.addEventListener('input', () => {
-  const opar = document.getElementById('titleText').value; //foind text in textarea
+addNumberToDuplicates.addEventListener('input', () => {
+  // let duplicatesItemsArr = document.getElementById('Duplicates').innerText;
+  // let duplicatesArrNew = duplicatesItemsArr.split(',');
+  // let uniqueItemsInNewArr = 0;
+  // uniqueItemsInNewArr = duplicatesArrNew.filter((item, index) => {
+  //   return duplicatesItemsArr.indexOf(item) !== index;
+  // });
+  // if (document.getElementById('Duplicates').innerText.length > 0) {
+  //   console.log(`Here is an Array from Duplicates: ${uniqueItemsInNewArr}`);
+  // }
+  function countDuplicates() {
+    //shoud find Array of duplicates elements
+    let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
+    let newArray = arrayOfDuplicates.split(',');
+    newArray.sort();
 
-  function highlight() {
-    let inputText = document.getElementById('amountArea'); //inputText from Title textarea
-    let search = document.getElementById('duplicatesItems').innerHTML; // text from title input textarea
-
-    search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
-
-    let re = new RegExp(search, 'g');
-    let m;
-    if (search.length > 0) {
-      inputText.innerHTML = opar.replace(re, `<mark>$&</mark>`);
-    } else {
-      inputText.innerHTML = opar;
+    let current = null;
+    let cnt = 0;
+    for (let i = 0; i < newArray.length; i++) {
+      if (newArray[i] != current) {
+        if (cnt > 0) {
+          console.log(`this item ${current} comes ${cnt} times`);
+        }
+        current = newArray[i];
+        cnt = 1;
+      } else {
+        cnt++;
+      }
     }
+    if (cnt > 0) {
+      console.log(`item ${current} comes ${cnt} times`);
+    }
+  }
+  if (document.getElementById('Duplicates').innerText.length) {
+    countDuplicates();
   }
 });
 
