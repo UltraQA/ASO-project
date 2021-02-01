@@ -121,6 +121,7 @@ addNumberToDuplicates.addEventListener('input', () => {
     let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
     let newArray = arrayOfDuplicates.split(',');
     newArray.sort();
+    document.getElementById('amountDuplicatesItems').innerHTML = '';
 
     let current = null;
     let cnt = 0;
@@ -128,17 +129,17 @@ addNumberToDuplicates.addEventListener('input', () => {
       if (newArray[i] != current) {
         if (cnt > 0) {
           console.log(`${current} ${cnt} times`);
-          document.getElementById('amountDuplicatesItems').innerHTML = `<span style="font-size: 24px; color: black">${current} (${cnt})`;
+          document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ')';
         }
         current = newArray[i];
-        cnt = 1;
+        cnt = 2;
       } else {
         cnt++;
       }
     }
     if (cnt > 0) {
       console.log(`${current} (${cnt}) times`);
-      document.getElementById('amountDuplicatesItems').innerHTML = `<span style="font-size: 24px; color: black">${current} (${cnt})`;
+      document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ')';
     }
   }
   if (document.getElementById('Duplicates').innerText.length > 0) {
