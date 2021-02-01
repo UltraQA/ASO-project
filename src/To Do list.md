@@ -15,3 +15,5 @@ ASO project!
 4. Find among words duplicates.
 5. Show duplicates.
 6. Highlight duplicates in all text area where they exists.
+7. Indicate Emoji 👈 like 1 symbol.
+8. Add clear duplicates function.
