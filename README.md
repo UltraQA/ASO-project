@@ -2,6 +2,8 @@
 
 ## ASO project! :octocat:
 
+Made by @UltraQA
+
 1. Title text area
    1.2 Sub-title text area
    1.3 KeyWords area
