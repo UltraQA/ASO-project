@@ -1,0 +1,83 @@
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  background: linear-gradient(45deg, #fafafa, #b0bec5);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+img {
+  margin: 10px;
+  align-items: center;
+}
+
+.welcomeText {
+  background-image: url(../icons/welcomImg.png);
+  background-color: #707070;
+  border-radius: 25px;
+}
+
+h1 {
+  color: #ffdf6c;
+  text-align: center;
+  font-size: 3.2em;
+  font-family: 'Audiowide', sans-serif;
+  /* min-width: 440px; */
+}
+
+#h4 {
+  color: #155c9ec7;
+  font-size: 1.875em;
+  text-align: left;
+  margin: 10px;
+  /* text-shadow: 2px 2px 5px red; */
+}
+
+#titleWordsAmount,
+#SubTitleWordsAmount,
+#keyWordsAmount {
+  color: black;
+  display: inline;
+  position: center;
+}
+
+textarea {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fbfcfc;
+  margin-bottom: 10px;
+}
+
+#amountArea {
+  color: #ff5722;
+}
+.DuplicatesLine {
+  color: rgb(233, 23, 152);
+}
+
+#titleCharacters,
+#SubTitleCharacters {
+  color: black;
+  display: inline;
+}
+
+#keyWordcharacters {
+  color: black;
+  display: inline;
+}
+
+#titleText,
+#subTitleText {
+  width: 20%;
+}
+
+#keyWords {
+  width: 45%;
+}
+
+mark {
+  background-color: red;
+  color: black;
+}
