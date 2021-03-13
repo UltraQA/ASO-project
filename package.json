@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/UltraQA/ASO-project/issues"
   },
-  "homepage": "https://github.com/UltraQA/ASO-project#readme"
+  "homepage": "https://github.com/UltraQA/ASO-project#readme",
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
 }
