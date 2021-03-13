@@ -1,6 +1,6 @@
 # Add html site with a table and placeholders
 
-ASO project!
+## ASO project! :octocat:
 
 1. Title text area
    1.2 Sub-title text area
