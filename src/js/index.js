@@ -6,6 +6,8 @@ const keyWordsAmount = document.getElementById('keyWords');
 const keyWordsCharactersAmount = document.getElementById('keyWords');
 const allTextFromAllTextArea = document.getElementById('page');
 const addNumberToDuplicates = document.getElementById('page');
+// import { } from './materialize';
+
 
 titleTextWordsAmount.addEventListener('input', () => {
   let text = document.getElementById('titleText').value;
