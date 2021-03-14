@@ -13,6 +13,9 @@ img {
   align-items: center;
 }
 
+::placeholder {
+  color: red;
+}
 .welcomeText {
   /* background-image: url(/icons/welcomImg.png); */
   /* background-color: #707070; */
