@@ -10,7 +10,7 @@ const addNumberToDuplicates = document.getElementById('page');
 titleTextWordsAmount.addEventListener('input', () => {
   let text = document.getElementById('titleText').value;
   let count = 0;
-  let split = text.split(' ');
+  let split = text.split(' ' && ':');
   for (let i = 0; i < split.length; i++) {
     if (split[i] != '') {
       count++;
@@ -88,9 +88,9 @@ allTextFromAllTextArea.addEventListener('input', () => {
   let keyWordsTextArea = document.getElementById('keyWords').value;
   let allTextArea = titleTextArea + ' ' + subTitleTextArea + ' ' + keyWordsTextArea;
   let allTextAreaValue = titleTextWordsAmount.value + ' ' + subtitleTextWordsAmount.value + ' ' + keyWordsAmount.value;
-  let regEx = /\s|\,/;
+  let regEx = /\s|\,|\:/;
   //replace all spaces from income text to ','
-  let newString = allTextArea.replace(/\s|\,/gi, ',');
+  let newString = allTextArea.replace(/\s|\,|\:/gi, ',');
   //trying to find duplicates items
   let arr = newString.toLowerCase().split(',');
   let uniqueItems = 0;
@@ -106,6 +106,7 @@ allTextFromAllTextArea.addEventListener('input', () => {
         'color: white; background: #f44336; font-size: 16px;',
         'Array contains ' + arrayOfStrings.length + ' words: ' + arrayOfStrings.join(' / ')
       );
+      // console.log(separator);
     }
     splitString(allTextAreaValue, regEx);
 
