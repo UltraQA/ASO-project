@@ -6,9 +6,11 @@ const keyWordsAmount = document.getElementById('keyWords');
 const keyWordsCharactersAmount = document.getElementById('keyWords');
 const allTextFromAllTextArea = document.getElementById('page');
 const addNumberToDuplicates = document.getElementById('page');
+let current = null;
 
 titleTextWordsAmount.addEventListener('input', () => {
-  let text = document.getElementById('titleText').value;
+  // let text = document.getElementById('titleText').value;
+  let text = titleTextWordsAmount.value;
   let count = 0;
   let split = text.split(' ' && ':');
   for (let i = 0; i < split.length; i++) {
@@ -21,7 +23,8 @@ titleTextWordsAmount.addEventListener('input', () => {
 
 titleTextCharactersAmount.addEventListener('input', () => {
   let maxLength = 30;
-  let textlength = document.getElementById('titleText').value.length;
+  // let textlength = document.getElementById('titleText').value.length;
+  let textlength = titleTextCharactersAmount.value.length;
 
   if (textlength > maxLength) {
     document.getElementById('titleCharacters').innerHTML =
@@ -33,7 +36,8 @@ titleTextCharactersAmount.addEventListener('input', () => {
 });
 
 subtitleTextWordsAmount.addEventListener('input', () => {
-  let text = document.getElementById('subTitleText').value;
+  // let text = document.getElementById('subTitleText').value;
+  let text = subtitleTextWordsAmount.value
   let count = 0;
   let split = text.split(' ');
   for (let i = 0; i < split.length; i++) {
@@ -46,7 +50,8 @@ subtitleTextWordsAmount.addEventListener('input', () => {
 
 subtitleTextCharactersAmount.addEventListener('input', () => {
   let maxLength = 30;
-  let textlength = document.getElementById('subTitleText').value.length;
+  // let textlength = document.getElementById('subTitleText').value.length;
+  let textlength = subtitleTextCharactersAmount.value.length
 
   if (textlength > maxLength) {
     document.getElementById('SubTitleCharacters').innerHTML =
@@ -58,7 +63,8 @@ subtitleTextCharactersAmount.addEventListener('input', () => {
 });
 
 keyWordsAmount.addEventListener('input', () => {
-  let text = document.getElementById('keyWords').value;
+  // let text = document.getElementById('keyWords').value;
+  let text = keyWordsAmount.value
   let count = 0;
   let split = text.split(/\s|\,/);
   for (let i = 0; i < split.length; i++) {
@@ -71,7 +77,8 @@ keyWordsAmount.addEventListener('input', () => {
 
 keyWordsCharactersAmount.addEventListener('input', () => {
   let maxLength = 100;
-  let textlength = document.getElementById('keyWords').value.length;
+  // let textlength = document.getElementById('keyWords').value.length;
+  let textlength = keyWordsCharactersAmount.value.length;
 
   if (textlength > maxLength) {
     document.getElementById('keyWordcharacters').innerHTML =
@@ -83,11 +90,15 @@ keyWordsCharactersAmount.addEventListener('input', () => {
 });
 
 allTextFromAllTextArea.addEventListener('input', () => {
-  let titleTextArea = document.getElementById('titleText').value;
-  let subTitleTextArea = document.getElementById('subTitleText').value;
-  let keyWordsTextArea = document.getElementById('keyWords').value;
+  // let titleTextArea = document.getElementById('titleText').value;
+  // let subTitleTextArea = document.getElementById('subTitleText').value;
+  // let keyWordsTextArea = document.getElementById('keyWords').value;
+  let titleTextArea = titleTextWordsAmount.value;
+  let subTitleTextArea = subtitleTextWordsAmount.value;
+  let keyWordsTextArea = keyWordsAmount.value;
+
   let allTextArea = titleTextArea + ' ' + subTitleTextArea + ' ' + keyWordsTextArea;
-  let allTextAreaValue = titleTextWordsAmount.value + ' ' + subtitleTextWordsAmount.value + ' ' + keyWordsAmount.value;
+  // let allTextAreaValue = titleTextWordsAmount.value + ' ' + subtitleTextWordsAmount.value + ' ' + keyWordsAmount.value;
   let regEx = /\s|\,|\:/;
   //replace all spaces from income text to ','
   let newString = allTextArea.replace(/\s|\,|\:/gi, ',');
@@ -108,42 +119,61 @@ allTextFromAllTextArea.addEventListener('input', () => {
       );
       // console.log(separator);
     }
-    splitString(allTextAreaValue, regEx);
+    // splitString(allTextAreaValue, regEx);
+    splitString(allTextArea, regEx);
 
-    console.log(arr);
+    // console.log(arr);
     console.log(`Repeated items: ${uniqueItems}`);
     document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 24px; color: black">' + uniqueItems;
   }
 });
 
 addNumberToDuplicates.addEventListener('input', () => {
-  function countDuplicates() {
-    //shoud find Array of duplicates elements
-    let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
-    let newArray = arrayOfDuplicates.split(',');
-    newArray.sort();
-    document.getElementById('amountDuplicatesItems').innerHTML = '';
-
-    let current = null;
-    let cnt = 0;
-    for (let i = 0; i < newArray.length; i++) {
-      if (newArray[i] != current) {
-        if (cnt > 0) {
-          console.log(`${current} ${cnt} times`);
-          document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ')';
-        }
-        current = newArray[i];
-        cnt = 2;
-      } else {
-        cnt++;
-      }
-    }
-    if (cnt > 0) {
-      console.log(`${current} (${cnt}) times`);
-      document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ')';
-    }
-  }
   if (document.getElementById('Duplicates').innerText.length > 0) {
     countDuplicates();
   }
+
+
+  let colorText = current;
+  // Color text
+  function Color() {
+    var text = colorText, // Текст, который надо найти
+      regexp = new RegExp(text, 'i');
+
+    if (regexp.exec(document.getElementById('amountDuplicatesItems').innerHTML)) {
+      var reg = new RegExp(text, 'g');
+      document.getElementById('amountDuplicatesItems').innerHTML = document.getElementById('amountDuplicatesItems').innerHTML.replace(reg, '<span style="color: red">' + text + '</span>');
+    } else {
+      console.log('Текст не найден');
+    };
+  }
+  Color();
 });
+
+
+function countDuplicates() {
+  //shoud find Array of duplicates elements
+  let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
+  let newArray = arrayOfDuplicates.split(',');
+  newArray.sort();
+  document.getElementById('amountDuplicatesItems').innerHTML = '';
+
+  // let current = null;
+  let cnt = 0;
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i] != current) {
+      if (cnt > 0) {
+        console.log(`${current} ${cnt} times`);
+        document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
+      }
+      current = newArray[i];
+      cnt = 2;
+    } else {
+      cnt++;
+    }
+  }
+  if (cnt > 0) {
+    console.log(`${current} (${cnt}) times`);
+    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
+  }
+}
