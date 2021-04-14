@@ -4,8 +4,7 @@ const subtitleTextWordsAmount = document.getElementById('subTitleText');
 const subtitleTextCharactersAmount = document.getElementById('subTitleText');
 const keyWordsAmount = document.getElementById('keyWords');
 const keyWordsCharactersAmount = document.getElementById('keyWords');
-const allTextFromAllTextArea = document.getElementById('page');
-const addNumberToDuplicates = document.getElementById('page');
+const allTextFromAllTextArea = document.getElementById('page'), addNumberToDuplicates = document.getElementById('page'), findUniqueElementsFromDuplicates = document.getElementById('page');
 let current = null;
 
 titleTextWordsAmount.addEventListener('input', () => {
@@ -113,7 +112,7 @@ allTextFromAllTextArea.addEventListener('input', () => {
 
     // console.log(arr);
     console.log(`Repeated items: ${uniqueItems}`);
-    document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 24px; color: black">' + uniqueItems;
+    document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: black">' + uniqueItems;
   }
 });
 
@@ -121,29 +120,31 @@ addNumberToDuplicates.addEventListener('input', () => {
   if (document.getElementById('Duplicates').innerText.length > 0) {
     countDuplicates();
   }
-
-
-  let colorText = current;
-  // Color text
-  function Color() {
-    var text = colorText, // Текст, который надо найти
-      regexp = new RegExp(text, 'i');
-
-    if (regexp.exec(document.getElementById('amountDuplicatesItems').innerHTML)) {
-      var reg = new RegExp(text, 'g');
-      document.getElementById('amountDuplicatesItems').innerHTML = document.getElementById('amountDuplicatesItems').innerHTML.replace(reg, '<span style="color: black">' + text + '</span>');
-    } else {
-      console.log('Текст не найден');
-    };
+  if (document.getElementById('Duplicates').innerText.length === null) {
+    throw new Error('Hmm countDuplicates function not works')
   }
-  Color();
 });
 
+findUniqueElementsFromDuplicates.addEventListener('input', () => {
+  if (document.getElementById('Duplicates').innerText.length > 0) {
+    let getElementsFromDuplicates = document.getElementById('Duplicates').innerText;
+    // let splitString = duplicatesFromDuplicatesItems.split(',');
+
+    let splitedElementsFromDuplicates = splitString(getElementsFromDuplicates);
+    // console.log('splettedString: ' + splitedElementsFromDuplicates);
+
+    let uniqueItemsFromDuplicates = getNewUniqueArrayFromDuplicateItems(splitedElementsFromDuplicates);
+    // console.log('splittingItems: ' + uniqueItemsFromDuplicates);
+    // console.log('splittingItems: ' + typeof (uniqueItemsFromDuplicates));
+  }
+})
+
+//shoud find Array of duplicates elements
 
 function countDuplicates() {
-  //shoud find Array of duplicates elements
-  let arrayOfDuplicates = document.getElementById('Duplicates').innerText;
-  let newArray = arrayOfDuplicates.split(',');
+  let b = document.getElementById('Duplicates').innerText;
+  let newArray = b.split(',');
+
   newArray.sort();
   document.getElementById('amountDuplicatesItems').innerHTML = '';
 
@@ -156,7 +157,7 @@ function countDuplicates() {
         document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
       }
       current = newArray[i];
-      cnt = 1;
+      cnt = 2;
     }
     if (newArray[i] = current) {
       // console.log(`${newArray[i]} = ${current}`);
@@ -173,6 +174,31 @@ function countDuplicates() {
       'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
   }
 }
+
+function splitString(str) {
+  const array = str.split(',')
+  let maxLength = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].length > maxLength) {
+      maxLength = array[i].length;
+    }
+  }
+  return array;
+}
+
+function getNewUniqueArrayFromDuplicateItems(arr) {
+  let uniqueArr = [...new Set(arr)]
+
+  if (uniqueArr.length > 1) {
+    console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nand size is : ${uniqueArr.length}`);
+  }
+  if (uniqueArr.length <= 1) {
+    throw new Error('Duplicates amount is less then 0', `and size is : ${uniqueArr.length}`)
+  }
+  return uniqueArr;
+}
+
 
 
 /**
