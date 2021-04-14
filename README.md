@@ -16,6 +16,6 @@ Made by @UltraQA
    3.3 Put result into some variable
 4. Find among words duplicates.
 5. Show duplicates.
-6. Highlight duplicates in all text area where they exists.
+6. Highlight duplicates in all text area where they exists. - add button to show duplicates!!!!!!!!!!
 7. Indicate Emoji 👈 like 1 symbol.
 8. Add clear duplicates function.
