@@ -11,7 +11,7 @@ let current = null;
 titleTextWordsAmount.addEventListener('input', () => {
   let text = titleTextWordsAmount.value;
   let count = 0;
-  let split = text.split(' ' && ':');
+  let split = text.split(' ' || ':');
   for (let i = 0; i < split.length; i++) {
     if (split[i] != '') {
       count++;
@@ -131,7 +131,7 @@ addNumberToDuplicates.addEventListener('input', () => {
 
     if (regexp.exec(document.getElementById('amountDuplicatesItems').innerHTML)) {
       var reg = new RegExp(text, 'g');
-      document.getElementById('amountDuplicatesItems').innerHTML = document.getElementById('amountDuplicatesItems').innerHTML.replace(reg, '<span style="color: red">' + text + '</span>');
+      document.getElementById('amountDuplicatesItems').innerHTML = document.getElementById('amountDuplicatesItems').innerHTML.replace(reg, '<span style="color: black">' + text + '</span>');
     } else {
       console.log('Текст не найден');
     };
@@ -152,17 +152,34 @@ function countDuplicates() {
   for (let i = 0; i < newArray.length; i++) {
     if (newArray[i] != current) {
       if (cnt > 0) {
-        console.log(`${current} ${cnt} times`);
+        // console.log(`${current} ${cnt} times`);
         document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
       }
       current = newArray[i];
-      cnt = 2;
-    } else {
+      cnt = 1;
+    }
+    if (newArray[i] = current) {
+      // console.log(`${newArray[i]} = ${current}`);
       cnt++;
     }
   }
+
   if (cnt > 0) {
-    console.log(`${current} (${cnt}) times`);
-    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
+    // console.log(`${current} (${cnt}) times`);
+    let wordsAmout = '(' + cnt + ') ';
+    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + wordsAmout;
+    console.log('%c%s',
+      'color: blue; background: yellowgreen; font-size: 16px;',
+      'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
   }
 }
+
+
+/**
+ * @Взять весь текст из поля @Duplicate_Items
+ * @Перевести весь текст в JSON и разбить на массив через ','
+ * @Брать аждый элемент массива и сравнивать с текстом в Полях: Title, SubTitle, KeyWords
+ * @Подсвечивать слово в полях, если оно совпало со словом, которе есть в строке Duplicatd Items
+ */
+
+
