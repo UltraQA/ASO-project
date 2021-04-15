@@ -112,7 +112,7 @@ allTextFromAllTextArea.addEventListener('input', () => {
 
     // console.log(arr);
     console.log(`Repeated items: ${uniqueItems}`);
-    document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: black">' + uniqueItems;
+    document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: Purple">' + uniqueItems;
   }
 });
 
@@ -157,7 +157,7 @@ function countDuplicates() {
         document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
       }
       current = newArray[i];
-      cnt = 2;
+      cnt = 1;
     }
     if (newArray[i] = current) {
       // console.log(`${newArray[i]} = ${current}`);
