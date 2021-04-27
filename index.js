@@ -139,7 +139,7 @@ findUniqueElementsFromDuplicates.addEventListener('input', () => {
   }
 })
 
-//shoud find Array of duplicates elements
+//should find Array of duplicates elements
 
 function countDuplicates() {
   let b = document.getElementById('Duplicates').innerText;
