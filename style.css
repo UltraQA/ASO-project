@@ -7,7 +7,10 @@ html {
   /* background: linear-gradient(45deg, #fafafa, #b0bec5); */
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
+text {
+  margin: 0;
+  display: block;
+}
 img {
   margin: 10px;
   align-items: center;
