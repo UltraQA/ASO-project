@@ -4,7 +4,10 @@ const subtitleTextWordsAmount = document.getElementById('subTitleText');
 const subtitleTextCharactersAmount = document.getElementById('subTitleText');
 const keyWordsAmount = document.getElementById('keyWords');
 const keyWordsCharactersAmount = document.getElementById('keyWords');
-const allTextFromAllTextArea = document.getElementById('page'), addNumberToDuplicates = document.getElementById('page'), findUniqueElementsFromDuplicates = document.getElementById('page');
+const allTextFromAllTextArea = document.getElementById('page');
+const showDuplicatesButton = document.querySelector('#showDuplicatesButton');
+const findUniqueElementsFromDuplicates = document.getElementById('page');
+
 let current = null;
 
 titleTextWordsAmount.addEventListener('input', () => {
@@ -12,7 +15,7 @@ titleTextWordsAmount.addEventListener('input', () => {
   let count = 0;
   let split = text.split(' ' || ':');
   for (let i = 0; i < split.length; i++) {
-    if (split[i] != '') {
+    if (split[i] !== '') {
       count++;
     }
   }
@@ -21,14 +24,14 @@ titleTextWordsAmount.addEventListener('input', () => {
 
 titleTextCharactersAmount.addEventListener('input', () => {
   let maxLength = 30;
-  let textlength = titleTextCharactersAmount.value.length;
+  let textLength = titleTextCharactersAmount.value.length;
 
-  if (textlength > maxLength) {
+  if (textLength > maxLength) {
     document.getElementById('titleCharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white">' + textlength + ' out of ' + maxLength + ' </span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Title length is ${textlength}/30`);
+      '<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + ' </span>';
+    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Title length is ${textLength}/30`);
   } else {
-    document.getElementById('titleCharacters').innerHTML = textlength + ' out of ' + maxLength;
+    document.getElementById('titleCharacters').innerHTML = textLength + ' out of ' + maxLength;
   }
 });
 
@@ -37,7 +40,7 @@ subtitleTextWordsAmount.addEventListener('input', () => {
   let count = 0;
   let split = text.split(' ');
   for (let i = 0; i < split.length; i++) {
-    if (split[i] != '') {
+    if (split[i] !== '') {
       count++;
     }
   }
@@ -46,14 +49,14 @@ subtitleTextWordsAmount.addEventListener('input', () => {
 
 subtitleTextCharactersAmount.addEventListener('input', () => {
   let maxLength = 30;
-  let textlength = subtitleTextCharactersAmount.value.length
+  let textLength = subtitleTextCharactersAmount.value.length
 
-  if (textlength > maxLength) {
+  if (textLength > maxLength) {
     document.getElementById('SubTitleCharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white">' + textlength + ' out of ' + maxLength + '</span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Sub-title length is ${textlength}/30`);
+      '<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + '</span>';
+    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Sub-title length is ${textLength}/30`);
   } else {
-    document.getElementById('SubTitleCharacters').innerHTML = textlength + ' out of ' + maxLength;
+    document.getElementById('SubTitleCharacters').innerHTML = textLength + ' out of ' + maxLength;
   }
 });
 
@@ -62,7 +65,7 @@ keyWordsAmount.addEventListener('input', () => {
   let count = 0;
   let split = text.split(/\s|\,/);
   for (let i = 0; i < split.length; i++) {
-    if (split[i] != '') {
+    if (split[i] !== '') {
       count++;
     }
   }
@@ -71,14 +74,14 @@ keyWordsAmount.addEventListener('input', () => {
 
 keyWordsCharactersAmount.addEventListener('input', () => {
   let maxLength = 100;
-  let textlength = keyWordsCharactersAmount.value.length;
+  let textLength = keyWordsCharactersAmount.value.length;
 
-  if (textlength > maxLength) {
-    document.getElementById('keyWordcharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white;">' + textlength + ' out of ' + maxLength + '</span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `keyWords length is ${textlength}/30`);
+  if (textLength > maxLength) {
+    document.getElementById('keyWordCharacters').innerHTML =
+      '<span style="background-color: #f44336; color: white;">' + textLength + ' out of ' + maxLength + '</span>';
+    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `keyWords length is ${textLength}/30`);
   } else {
-    document.getElementById('keyWordcharacters').innerHTML = textlength + ' out of ' + maxLength;
+    document.getElementById('keyWordCharacters').innerHTML = textLength + ' out of ' + maxLength;
   }
 });
 
@@ -93,7 +96,7 @@ allTextFromAllTextArea.addEventListener('input', () => {
   let newString = allTextArea.replace(/\s|\,|\:/gi, ',');
   //trying to find duplicates items
   let arr = newString.toLowerCase().split(',');
-  let uniqueItems = 0;
+  let uniqueItems;
   uniqueItems = arr.filter((item, index) => {
     return arr.indexOf(item) !== index;
   });
@@ -116,22 +119,13 @@ allTextFromAllTextArea.addEventListener('input', () => {
   }
 });
 
-addNumberToDuplicates.addEventListener('input', () => {
-  if (document.getElementById('Duplicates').innerText.length > 0) {
-    countDuplicates();
-  }
-  if (document.getElementById('Duplicates').innerText.length === null) {
-    throw new Error('Hmm countDuplicates function not works')
-  }
-});
-
 findUniqueElementsFromDuplicates.addEventListener('input', () => {
   if (document.getElementById('Duplicates').innerText.length > 0) {
     let getElementsFromDuplicates = document.getElementById('Duplicates').innerText;
     // let splitString = duplicatesFromDuplicatesItems.split(',');
 
     let splitedElementsFromDuplicates = splitString(getElementsFromDuplicates);
-    // console.log('splettedString: ' + splitedElementsFromDuplicates);
+    // console.log('splitedString: ' + splitedElementsFromDuplicates);
 
     let uniqueItemsFromDuplicates = getNewUniqueArrayFromDuplicateItems(splitedElementsFromDuplicates);
     // console.log('splittingItems: ' + uniqueItemsFromDuplicates);
@@ -151,7 +145,7 @@ function countDuplicates() {
   // let current = null;
   let cnt = 0;
   for (let i = 0; i < newArray.length; i++) {
-    if (newArray[i] != current) {
+    if (newArray[i] !== current) {
       if (cnt > 0) {
         // console.log(`${current} ${cnt} times`);
         document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
@@ -159,7 +153,7 @@ function countDuplicates() {
       current = newArray[i];
       cnt = 1;
     }
-    if (newArray[i] = current) {
+    if (newArray[i] === current) {
       // console.log(`${newArray[i]} = ${current}`);
       cnt++;
     }
@@ -167,8 +161,8 @@ function countDuplicates() {
 
   if (cnt > 0) {
     // console.log(`${current} (${cnt}) times`);
-    let wordsAmout = '(' + cnt + ') ';
-    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + wordsAmout;
+    let wordsAmount = '(' + cnt + ') ';
+    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + wordsAmount;
     console.log('%c%s',
       'color: blue; background: yellowgreen; font-size: 16px;',
       'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
@@ -191,13 +185,28 @@ function getNewUniqueArrayFromDuplicateItems(arr) {
   let uniqueArr = [...new Set(arr)]
 
   if (uniqueArr.length > 1) {
-    console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nand size is : ${uniqueArr.length}`);
+    console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nAnd size is : ${uniqueArr.length} words`);
   }
   if (uniqueArr.length <= 1) {
-    throw new Error('Duplicates amount is less then 0', `and size is : ${uniqueArr.length}`)
+    throw new Error(`Duplicates amount is less or equal of 1 and size is : ${uniqueArr.length} words`)
   }
   return uniqueArr;
 }
+
+//after clicking on button I want to see duplicates
+showDuplicatesButton.addEventListener('click', ()=>{
+  if (document.getElementById('Duplicates').innerText.length > 0) {
+    countDuplicates();
+  }
+  if (document.getElementById('Duplicates').innerText.length === null) {
+    throw new Error('Hmm countDuplicates function not works')
+  }
+});
+
+//TODO :
+// 1. I have a button
+// 2. After clicking on button I want to see duplicates words
+
 
 
 
@@ -205,7 +214,7 @@ function getNewUniqueArrayFromDuplicateItems(arr) {
  * @Взять весь текст из поля @Duplicate_Items
  * @Перевести весь текст в JSON и разбить на массив через ','
  * @Брать аждый элемент массива и сравнивать с текстом в Полях: Title, SubTitle, KeyWords
- * @Подсвечивать слово в полях, если оно совпало со словом, которе есть в строке Duplicatd Items
+ * @Подсвечивать слово в полях, если оно совпало со словом, которе есть в строке Duplicate Items
  */
 
 
