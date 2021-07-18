@@ -12,7 +12,7 @@ let current = null;
 
 /**
 	Here we trying to find amount of the words in the field by separating text
-*/
+ */
 titleTextWordsAmount.addEventListener('input', () => {
 	document.getElementById('titleWordsAmount').innerHTML = wordsAmount(titleTextWordsAmount, ' ', ':');
 });
@@ -120,14 +120,23 @@ function countDuplicates() {
 			cnt++;
 		}
 	}
+	// console.log(cnt);
 
-	if (cnt > 0) {
-		// console.log(`${current} (${cnt}) times`);
+	if (cnt === 1) {
+		cnt = 0;
 		let wordsAmount = '(' + cnt + ') ';
 		document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
 		console.log('%c%s',
 			'color: blue; background: yellowgreen; font-size: 16px;',
 			'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
+	}
+	if (cnt >= 2) {
+		let wordsAmount = '(' + cnt + ') ';
+		document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
+		console.log('%c%s',
+			'color: blue; background: yellowgreen; font-size: 16px;',
+			'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
+		console.log(current);
 	}
 }
 
@@ -167,7 +176,7 @@ let wordsAmount = function(textField, separator, separator2 = separator) {
 	return count;
 };
 
-let maxLengthOfCharactersAmount = function(maxFieldLength = 30, textFieldLength, elementId){
+let maxLengthOfCharactersAmount = function(maxFieldLength = 30, textFieldLength, elementId) {
 	let maxLength = maxFieldLength;
 	let textLength = textFieldLength.value.length;
 	let elementID = document.getElementById(elementId);
@@ -175,10 +184,10 @@ let maxLengthOfCharactersAmount = function(maxFieldLength = 30, textFieldLength,
 	if (textLength > maxLength) {
 		return elementID.innerHTML =
 			'<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + '</span>';
-	}else {
+	} else {
 		return elementID.innerHTML = textLength + ' out of ' + maxLength;
 	}
-}
+};
 
 //TODO :
 // 1. I have a button
