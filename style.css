@@ -25,6 +25,7 @@ img {
   /* background-color: #707070; */
   border-radius: 25px;
   height: 10em;
+  display: none;
 }
 
 h1 {
