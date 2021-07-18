@@ -10,204 +10,180 @@ const findUniqueElementsFromDuplicates = document.getElementById('page');
 
 let current = null;
 
+/**
+	Here we trying to find amount of the words in the field by separating text
+*/
 titleTextWordsAmount.addEventListener('input', () => {
-  let text = titleTextWordsAmount.value;
-  let count = 0;
-  let split = text.split(' ' || ':');
-  for (let i = 0; i < split.length; i++) {
-    if (split[i] !== '') {
-      count++;
-    }
-  }
-  document.getElementById('titleWordsAmount').innerHTML = count;
+	document.getElementById('titleWordsAmount').innerHTML = wordsAmount(titleTextWordsAmount, ' ', ':');
 });
-
-titleTextCharactersAmount.addEventListener('input', () => {
-  let maxLength = 30;
-  let textLength = titleTextCharactersAmount.value.length;
-
-  if (textLength > maxLength) {
-    document.getElementById('titleCharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + ' </span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Title length is ${textLength}/30`);
-  } else {
-    document.getElementById('titleCharacters').innerHTML = textLength + ' out of ' + maxLength;
-  }
-});
-
 subtitleTextWordsAmount.addEventListener('input', () => {
-  let text = subtitleTextWordsAmount.value
-  let count = 0;
-  let split = text.split(' ');
-  for (let i = 0; i < split.length; i++) {
-    if (split[i] !== '') {
-      count++;
-    }
-  }
-  document.getElementById('SubTitleWordsAmount').innerHTML = count;
+	document.getElementById('SubTitleWordsAmount').innerHTML = wordsAmount(subtitleTextWordsAmount, ' ');
 });
-
-subtitleTextCharactersAmount.addEventListener('input', () => {
-  let maxLength = 30;
-  let textLength = subtitleTextCharactersAmount.value.length
-
-  if (textLength > maxLength) {
-    document.getElementById('SubTitleCharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + '</span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `Sub-title length is ${textLength}/30`);
-  } else {
-    document.getElementById('SubTitleCharacters').innerHTML = textLength + ' out of ' + maxLength;
-  }
-});
-
 keyWordsAmount.addEventListener('input', () => {
-  let text = keyWordsAmount.value
-  let count = 0;
-  let split = text.split(/\s|\,/);
-  for (let i = 0; i < split.length; i++) {
-    if (split[i] !== '') {
-      count++;
-    }
-  }
-  document.getElementById('keyWordsAmount').innerHTML = count;
+	document.getElementById('keyWordsAmount').innerHTML = wordsAmount(keyWordsAmount, /\s|\,/);
 });
 
+/**
+   Here we trying to find amount of text characters in the field
+ */
+titleTextCharactersAmount.addEventListener('input', () => {
+	maxLengthOfCharactersAmount(30, titleTextCharactersAmount, 'titleCharacters');
+});
+subtitleTextCharactersAmount.addEventListener('input', () => {
+	maxLengthOfCharactersAmount(30, subtitleTextCharactersAmount, 'SubTitleCharacters');
+});
 keyWordsCharactersAmount.addEventListener('input', () => {
-  let maxLength = 100;
-  let textLength = keyWordsCharactersAmount.value.length;
-
-  if (textLength > maxLength) {
-    document.getElementById('keyWordCharacters').innerHTML =
-      '<span style="background-color: #f44336; color: white;">' + textLength + ' out of ' + maxLength + '</span>';
-    console.log('%c%s', 'color: white; background: #f44336; font-size: 16px;', `keyWords length is ${textLength}/30`);
-  } else {
-    document.getElementById('keyWordCharacters').innerHTML = textLength + ' out of ' + maxLength;
-  }
+	maxLengthOfCharactersAmount(100, keyWordsCharactersAmount, 'keyWordCharacters');
 });
 
+/**
+ Here we truing to find all text from the all text fields
+ * */
 allTextFromAllTextArea.addEventListener('input', () => {
-  let titleTextArea = titleTextWordsAmount.value;
-  let subTitleTextArea = subtitleTextWordsAmount.value;
-  let keyWordsTextArea = keyWordsAmount.value;
+	let titleTextArea = titleTextWordsAmount.value;
+	let subTitleTextArea = subtitleTextWordsAmount.value;
+	let keyWordsTextArea = keyWordsAmount.value;
 
-  let allTextArea = titleTextArea + ' ' + subTitleTextArea + ' ' + keyWordsTextArea;
-  let regEx = /\s|\,|\:/;
-  //replace all spaces from income text to ','
-  let newString = allTextArea.replace(/\s|\,|\:/gi, ',');
-  //trying to find duplicates items
-  let arr = newString.toLowerCase().split(',');
-  let uniqueItems;
-  uniqueItems = arr.filter((item, index) => {
-    return arr.indexOf(item) !== index;
-  });
-  //If all text areas are filled - then we join all texts split them and store in finalString array
-  if (titleTextArea.length > 0 && subTitleTextArea.length > 0 && keyWordsTextArea.length > 0) {
-    function splitString(stringToSplit, separator) {
-      let arrayOfStrings = stringToSplit.split(separator);
-      console.log(
-        '%c%s',
-        'color: white; background: #f44336; font-size: 16px;',
-        'Array contains ' + arrayOfStrings.length + ' words: ' + arrayOfStrings.join(' / ')
-      );
-      // console.log(separator);
-    }
-    splitString(allTextArea, regEx);
+	let allTextArea = titleTextArea + ' ' + subTitleTextArea + ' ' + keyWordsTextArea;
+	let regEx = /\s|\,|\:/;
+	//replace all spaces from income text to ','
+	let newString = allTextArea.replace(/\s|\,|\:/gi, ',');
+	//trying to find duplicates items
+	let arr = newString.toLowerCase().split(',');
+	let uniqueItems = arr.filter((item, index) => {
+		return arr.indexOf(item) !== index;
+	});
+	//If all text areas are filled - then we join all texts split them and store in finalString array
+	if (titleTextArea.length > 0 && subTitleTextArea.length > 0 && keyWordsTextArea.length > 0) {
+		function splitString(stringToSplit, separator) {
+			let arrayOfStrings = stringToSplit.split(separator);
+			console.log(
+				'%c%s',
+				'color: white; background: #f44336; font-size: 16px;',
+				'Array contains ' + arrayOfStrings.length + ' words: ' + arrayOfStrings.join(' / ')
+			);
+			// console.log(separator);
+		}
 
-    // console.log(arr);
-    console.log(`Repeated items: ${uniqueItems}`);
-    document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: Purple">' + uniqueItems;
-  }
+		splitString(allTextArea, regEx);
+
+		// console.log(arr);
+		console.log(`Repeated items: ${uniqueItems}`);
+		document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: Purple">' + uniqueItems;
+	}
 });
 
 findUniqueElementsFromDuplicates.addEventListener('input', () => {
-  if (document.getElementById('Duplicates').innerText.length > 0) {
-    let getElementsFromDuplicates = document.getElementById('Duplicates').innerText;
-    // let splitString = duplicatesFromDuplicatesItems.split(',');
+	if (document.getElementById('Duplicates').innerText.length > 0) {
+		let getElementsFromDuplicates = document.getElementById('Duplicates').innerText;
+		let splitedElementsFromDuplicates = splitString(getElementsFromDuplicates);
+		getNewUniqueArrayFromDuplicateItems(splitedElementsFromDuplicates);
+	}
+});
 
-    let splitedElementsFromDuplicates = splitString(getElementsFromDuplicates);
-    // console.log('splitedString: ' + splitedElementsFromDuplicates);
+//after clicking on button I want to see duplicates
+showDuplicatesButton.addEventListener('click', () => {
+	let duplicatesElements = document.getElementById('Duplicates').innerText;
+	if (duplicatesElements.length > 0) {
+		countDuplicates();
+	}
+	if (duplicatesElements.length === null) {
+		throw new Error('Hmm countDuplicates function not works');
+	}
+});
 
-    let uniqueItemsFromDuplicates = getNewUniqueArrayFromDuplicateItems(splitedElementsFromDuplicates);
-    // console.log('splittingItems: ' + uniqueItemsFromDuplicates);
-    // console.log('splittingItems: ' + typeof (uniqueItemsFromDuplicates));
-  }
-})
 
 //should find Array of duplicates elements
-
 function countDuplicates() {
-  let b = document.getElementById('Duplicates').innerText;
-  let newArray = b.split(',');
+	let b = document.getElementById('Duplicates').innerText;
+	let newArray = b.split(',');
 
-  newArray.sort();
-  document.getElementById('amountDuplicatesItems').innerHTML = '';
+	/**
+	 * sorting array of words by ABC
+	 */
+	newArray.sort();
+	document.getElementById('amountDuplicatesItems').innerHTML = '';
 
-  // let current = null;
-  let cnt = 0;
-  for (let i = 0; i < newArray.length; i++) {
-    if (newArray[i] !== current) {
-      if (cnt > 0) {
-        // console.log(`${current} ${cnt} times`);
-        document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + '(' + cnt + ') ';
-      }
-      current = newArray[i];
-      cnt = 1;
-    }
-    if (newArray[i] === current) {
-      // console.log(`${newArray[i]} = ${current}`);
-      cnt++;
-    }
-  }
+	let current = '';
+	let cnt = 0;
+	for (let i = 0; i < newArray.length; i++) {
+		if (newArray[i] !== current) {
+			if (cnt > 0) {
+				// console.log(`${current} ${cnt} times`);
+				document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + '(' + cnt + ') ';
+			}
+			current = newArray[i];
+			cnt = 1;
+		}
+		if (newArray[i] === current) {
+			// console.log(`${newArray[i]} = ${current}`);
+			cnt++;
+		}
+	}
 
-  if (cnt > 0) {
-    // console.log(`${current} (${cnt}) times`);
-    let wordsAmount = '(' + cnt + ') ';
-    document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: black">` + current + wordsAmount;
-    console.log('%c%s',
-      'color: blue; background: yellowgreen; font-size: 16px;',
-      'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
-  }
+	if (cnt > 0) {
+		// console.log(`${current} (${cnt}) times`);
+		let wordsAmount = '(' + cnt + ') ';
+		document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
+		console.log('%c%s',
+			'color: blue; background: yellowgreen; font-size: 16px;',
+			'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
+	}
 }
 
 function splitString(str) {
-  const array = str.split(',')
-  let maxLength = 0;
+	const array = str.split(',');
+	let maxLength = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].length > maxLength) {
-      maxLength = array[i].length;
-    }
-  }
-  return array;
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].length > maxLength) {
+			maxLength = array[i].length;
+		}
+	}
+	return array;
 }
 
 function getNewUniqueArrayFromDuplicateItems(arr) {
-  let uniqueArr = [...new Set(arr)]
+	let uniqueArr = [...new Set(arr)];
 
-  if (uniqueArr.length > 1) {
-    console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nAnd size is : ${uniqueArr.length} words`);
-  }
-  if (uniqueArr.length <= 1) {
-    throw new Error(`Duplicates amount is less or equal of 1 and size is : ${uniqueArr.length} words`)
-  }
-  return uniqueArr;
+	if (uniqueArr.length > 1) {
+		console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nAnd size is : ${uniqueArr.length} words`);
+	}
+	if (uniqueArr.length <= 1) {
+		throw new Error(`Duplicates amount is less or equal of 1 and size is : ${uniqueArr.length} words`);
+	}
+	return uniqueArr;
 }
 
-//after clicking on button I want to see duplicates
-showDuplicatesButton.addEventListener('click', ()=>{
-  if (document.getElementById('Duplicates').innerText.length > 0) {
-    countDuplicates();
-  }
-  if (document.getElementById('Duplicates').innerText.length === null) {
-    throw new Error('Hmm countDuplicates function not works')
-  }
-});
+let wordsAmount = function(textField, separator, separator2 = separator) {
+	let textValue = textField.value;
+	let count = '';
+	let split = textValue.split(separator || separator2);
+	for (let i = 0; i < split.length; i++) {
+		if (split[i] !== '') {
+			count++;
+		}
+	}
+	return count;
+};
+
+let maxLengthOfCharactersAmount = function(maxFieldLength = 30, textFieldLength, elementId){
+	let maxLength = maxFieldLength;
+	let textLength = textFieldLength.value.length;
+	let elementID = document.getElementById(elementId);
+
+	if (textLength > maxLength) {
+		return elementID.innerHTML =
+			'<span style="background-color: #f44336; color: white">' + textLength + ' out of ' + maxLength + '</span>';
+	}else {
+		return elementID.innerHTML = textLength + ' out of ' + maxLength;
+	}
+}
 
 //TODO :
 // 1. I have a button
 // 2. After clicking on button I want to see duplicates words
-
-
+// 3. Sort duplicates by ABC
 
 
 /**
