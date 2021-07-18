@@ -1,62 +1,65 @@
 body {
-  height: auto;
+    height: auto;
 }
 
 html {
-  /*height: 100%;*/
-  /* background: linear-gradient(45deg, #fafafa, #b0bec5); */
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /*height: 100%;*/
+    /* background: linear-gradient(45deg, #fafafa, #b0bec5); */
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 text {
-  margin: 0;
-  display: block;
+    margin: 0;
+    display: block;
 }
+
 img {
-  margin: 10px;
-  align-items: center;
-  display: none;
+    margin: 10px;
+    align-items: center;
+    display: none;
 }
 
 ::placeholder {
-  color: red;
+    color: red;
 }
+
 .welcomeText {
-  /* background-image: url(/icons/welcomImg.png); */
-  /* background-color: #707070; */
-  border-radius: 25px;
-  height: 10em;
-  display: none;
+    /* background-image: url(/icons/welcomImg.png); */
+    /* background-color: #707070; */
+    border-radius: 25px;
+    height: 10em;
+    display: none;
 }
 
 h1 {
-  /* color: #ffdf6c; */
-  text-align: center;
-  font-size: 3.2em;
-  font-family: 'Teko', sans-serif;
-  /* min-width: 440px; */
+    /* color: #ffdf6c; */
+    text-align: center;
+    font-size: 3.2em;
+    font-family: 'Teko', sans-serif;
+    /* min-width: 440px; */
 }
 
 #h4 {
-  /* color: #155c9ec7; */
-  font-size: 1.875em;
-  text-align: left;
-  margin: 10px;
-  /* text-shadow: 2px 2px 5px red; */
+    /* color: #155c9ec7; */
+    font-size: 1.875em;
+    text-align: left;
+    margin: 10px;
+    /* text-shadow: 2px 2px 5px red; */
 }
 
 #titleWordsAmount,
 #SubTitleWordsAmount,
 #keyWordsAmount {
-  color: black;
-  display: inline;
-  position: center;
+    color: black;
+    display: inline;
+    position: center;
 }
 
 textarea {
-  padding: 10px;
-  border-radius: 15px;
-  /* background-color: #aec9c9; */
-  margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    /* background-color: #aec9c9; */
+    margin-bottom: 10px;
 }
 
 /* #amountArea { */
@@ -64,35 +67,37 @@ textarea {
 /* } */
 
 .DuplicatesLine {
-  /* color: rgb(233, 23, 152); */
-  /* visibility: hidden; */
-  opacity: 0;
-  display: none;
+    /* color: rgb(233, 23, 152); */
+    /* visibility: hidden; */
+    opacity: 0;
+    display: none;
 }
 
 #titleCharacters,
 #SubTitleCharacters {
-  /* color: black; */
-  display: inline;
+    /* color: black; */
+    display: inline;
 }
 
 #keyWordcharacters {
-  /* color: black; */
-  display: inline;
+    /* color: black; */
+    display: inline;
 }
 
 #titleText,
 #subTitleText {
-  width: 55%;
-  height: 5em;
+    width: 55%;
+    height: 4em;
+    min-width: 240px;
 }
 
 #keyWords {
-  width: 65%;
-  height: 5em;
+    width: 65%;
+    height: 4em;
+    min-width: 293px;
 }
 
 mark {
-  background-color: red;
-  color: black;
+    background-color: red;
+    color: black;
 }
