@@ -11,7 +11,7 @@ const findUniqueElementsFromDuplicates = document.getElementById('page');
 let current = null;
 
 /**
-	Here we trying to find amount of the words in the field by separating text
+	Here we are trying to find amount of the words in the field by separating text
  */
 titleTextWordsAmount.addEventListener('input', () => {
 	document.getElementById('titleWordsAmount').innerHTML = wordsAmount(titleTextWordsAmount, ' ', ':');
@@ -24,7 +24,7 @@ keyWordsAmount.addEventListener('input', () => {
 });
 
 /**
-   Here we trying to find amount of text characters in the field
+   Here we are trying to find amount of text characters in the field
  */
 titleTextCharactersAmount.addEventListener('input', () => {
 	maxLengthOfCharactersAmount(30, titleTextCharactersAmount, 'titleCharacters');
@@ -37,7 +37,7 @@ keyWordsCharactersAmount.addEventListener('input', () => {
 });
 
 /**
- Here we truing to find all text from the all text fields
+ Here we are truing to find all text from the all text fields
  * */
 allTextFromAllTextArea.addEventListener('input', () => {
 	let titleTextArea = titleTextWordsAmount.value;
@@ -69,7 +69,8 @@ allTextFromAllTextArea.addEventListener('input', () => {
 
 		// console.log(arr);
 		console.log(`Repeated items: ${uniqueItems}`);
-		document.getElementById('Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: Purple">' + uniqueItems;
+		document.getElementById(
+			'Duplicates').innerHTML = '<span id="duplicatesItems" style="font-size: 16px; color: Purple">' + uniqueItems;
 	}
 });
 
@@ -110,7 +111,8 @@ function countDuplicates() {
 		if (newArray[i] !== current) {
 			if (cnt > 0) {
 				// console.log(`${current} ${cnt} times`);
-				document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + '(' + cnt + ') ';
+				document.getElementById(
+					'amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + '(' + cnt + ') ';
 			}
 			current = newArray[i];
 			cnt = 1;
@@ -125,15 +127,19 @@ function countDuplicates() {
 	if (cnt === 1) {
 		cnt = 0;
 		let wordsAmount = '(' + cnt + ') ';
-		document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
-		console.log('%c%s',
+		document.getElementById(
+			'amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
+		console.log(
+			'%c%s',
 			'color: blue; background: yellowgreen; font-size: 16px;',
 			'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
 	}
 	if (cnt >= 2) {
 		let wordsAmount = '(' + cnt + ') ';
-		document.getElementById('amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
-		console.log('%c%s',
+		document.getElementById(
+			'amountDuplicatesItems').innerHTML += `<span style="font-size: 24px; color: #000000">` + current + wordsAmount;
+		console.log(
+			'%c%s',
 			'color: blue; background: yellowgreen; font-size: 16px;',
 			'Duplicated items: ' + document.getElementById('amountDuplicatesItems').innerText);
 		console.log(current);
@@ -156,10 +162,11 @@ function getNewUniqueArrayFromDuplicateItems(arr) {
 	let uniqueArr = [...new Set(arr)];
 
 	if (uniqueArr.length > 1) {
-		console.log(`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nAnd size is : ${uniqueArr.length} words`);
+		console.log(
+			`Here is new unique Arr from Duplicates Items:  ${uniqueArr} \nAnd size is : ${uniqueArr.length} words`);
 	}
 	if (uniqueArr.length <= 1) {
-		throw new Error(`Duplicates amount is less or equal of 1 and size is : ${uniqueArr.length} words`);
+		console.warn(`Duplicates amount is less or equal of 1 and size is : ${uniqueArr.length} words`);
 	}
 	return uniqueArr;
 }
@@ -202,4 +209,22 @@ let maxLengthOfCharactersAmount = function(maxFieldLength = 30, textFieldLength,
  * @Подсвечивать слово в полях, если оно совпало со словом, которе есть в строке Duplicate Items
  */
 
+import {TitleArea} from './src/js/title.js';
+import {SubTitle} from './src/js/subTitle.js';
+
+const titleText = TitleArea.titleElement;
+const subTitleText = SubTitle.subTitle;
+titleText.addEventListener('input', () => {
+	if (TitleArea.getTitleText().length > 1) {
+		console.log(
+			TitleArea.getTitleText(),
+			TitleArea.getTitleText().length
+		);
+	}
+});
+subTitleText.addEventListener('input', () => {
+	if (SubTitle.getSubTitleText().length > 1) {
+		console.log(SubTitle.getSubTitleText());
+	}
+});
 
