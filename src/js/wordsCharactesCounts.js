@@ -34,7 +34,7 @@ function countDuplicates() {
   let current = null;
   let cnt = 0;
   for (let i = 0; i < newArray.length; i++) {
-    if (newArray[i] != current) {
+    if (newArray[i] !== current) {
       if (cnt > 0) {
         console.log(`this item ${current} comes ${cnt} times`);
       }
