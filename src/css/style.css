@@ -52,7 +52,7 @@ h1 {
 #keyWordsAmount {
     color: black;
     display: inline;
-    position: center;
+    position: absolute;
 }
 
 textarea {
@@ -61,6 +61,11 @@ textarea {
     /* background-color: #aec9c9; */
     margin-bottom: 10px;
 }
+
+.highlight {
+    background-color: yellow;
+}
+
 
 /* #amountArea { */
 /* color: #ff5722; */
