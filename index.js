@@ -14,6 +14,7 @@
 import {TitleArea} from './src/js/title.js';
 import {SubTitle} from './src/js/subTitle.js';
 import {KeyWords} from './src/js/keyWords.js';
+import {DuplicatesArea} from './src/js/duplicatesArea.js';
 import {Logic} from './src/js/logic.js';
 
 TitleArea.addWordsAmount();
@@ -30,7 +31,12 @@ KeyWords.showDuplicatesButton.addEventListener('click', () => {
 	Logic.showDuplicates(KeyWords.keyWords);
 });
 
-
+DuplicatesArea.cleanAllTextAreasButton.addEventListener('click', () => {
+	DuplicatesArea.cleanTextArea(TitleArea.titleElement);
+	DuplicatesArea.cleanTextArea(SubTitle.subTitle);
+	DuplicatesArea.cleanTextArea(KeyWords.keyWords);
+	DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
+});
 
 
 

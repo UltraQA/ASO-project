@@ -7,6 +7,7 @@ export class KeyWords {
 	static keyWordsCharacters = document.querySelector('#keyWordCharacters');
 	static showDuplicatesButton = document.querySelector('#showDuplicatesButton');
 
+
 	constructor() {
 	}
 
