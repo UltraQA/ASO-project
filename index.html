@@ -26,10 +26,20 @@
 			<!--                <img id="img" src="./icons/hiIcon.png" alt="Hello icon" width="140" height="140">-->
 		</h1>
 	</div>
-	<div class="titleText col s6 container" id='wordAmount titleArea'>
-		<h4 id="h4" class="brown-text text-darken-2 ">Title text</h4>
-		<textarea autofocus name="Title text" id="titleText" class="inputText hoverable" rows="2" maxlength="50"
-				  placeholder="Insert Title text here" tabindex="1"></textarea>
+	<div class="titleText col s5 container" id='titleArea'>
+		<!--	New	Title -->
+		<div class="row row-special">
+			<form class="col s10 m8">
+				<div class="row">
+					<div class="input-field col s10" id="titleDiv">
+						<textarea name="Title text" id="titleText" class="materialize-textarea"
+								  maxlength="50"></textarea>
+						<label for="titleText">Title text</label>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--	New	Title -->
 		<div id="amountArea">
                 <span class="textField red-text text-darken-1">
                     Words amount:
@@ -44,10 +54,20 @@
 		</div>
 		<div class="divider"></div>
 	</div>
-	<div class="subTitleText col s6 section container" id='wordAmount subTitleArea'>
-		<h4 id="h4" class="brown-text text-darken-2">SubTitle text</h4>
-		<textarea name="SubTitle text" id="subTitleText" class="inputText hoverable" rows="3" maxlength="50"
-				  placeholder="Insert SubTitle text here" tabindex="2"></textarea>
+	<div class="subTitleText col s6 section container" id='subTitleArea'>
+		<!--	New	SubTitle -->
+		<div class="row row-special">
+			<form class="col s10 m8">
+				<div class="row">
+					<div class="input-field col s10" id="subTitleDiv">
+						<textarea id="subTitleText" class="materialize-textarea" class="materialize-textarea"
+								  maxlength="50"></textarea>
+						<label for="subTitleText">SubTitle text</label>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--	New	SubTitle -->
 		<div id="amountArea">
                 <span class="textField red-text text-darken-1">
                     Words amount:
@@ -62,10 +82,20 @@
 		</div>
 		<div class="divider"></div>
 	</div>
-	<div class="keyWords col s6 section container" id='wordAmount keyWordsArea'>
-		<h4 id="h4" class="brown-text text-darken-2">KeyWords</h4>
-		<textarea name="KeyWords" id="keyWords" class="inputText hoverable" rows="5" maxlength="150"
-				  placeholder="Insert KeyWords here" tabindex="3"></textarea>
+	<div class="keyWords col s6 section container" id='keyWordsArea'>
+		<!--	New	KeyWords -->
+		<div class="row row-special">
+			<form class="col s12 m8">
+				<div class="row">
+					<div class="input-field col s12" id="keyWordsDiv">
+						<textarea id="keyWords" class="materialize-textarea" class="materialize-textarea"
+								  maxlength="100"></textarea>
+						<label for="keyWords">KeyWords text</label>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--	New	KeyWords -->
 		<div id="amountArea">
                 <span class="textField red-text text-darken-1">
                     Words amount:

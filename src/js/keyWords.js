@@ -22,4 +22,8 @@ export class KeyWords {
 			this.keyWordsAmount.innerHTML = Logic.wordsAmount(this.keyWords, separator, separator2);
 		});
 	}
+
+	static cleanCharacterArea(area) {
+		area.innerHTML = '<span id="keyWordCharacters" className="black-text"> out of 100 </span>'
+	}
 }

@@ -40,9 +40,17 @@ export class Logic {
 		return array;
 	}
 
-	static showDuplicates(textArea) {
-		// Get the text from the textarea element
-		const text = textArea.value;
+	static showDuplicatesForAllAreas(titleArea, subTitleArea, keyWordsArea) {
+		// Get the text from the three textarea elements
+		const textArea1 = titleArea;
+		const textArea2 = subTitleArea;
+		const textArea3 = keyWordsArea;
+		const text1 = textArea1.value;
+		const text2 = textArea2.value;
+		const text3 = textArea3.value;
+
+		// Combine the text from the three textAreas into one string
+		const text = text1 + ' ' + text2 + ' ' + text3;
 
 		// Split the text into an array of words
 		const words = text.split(/[\s\p{P}]+/u);
@@ -63,8 +71,12 @@ export class Logic {
 					wordFrequency[word] = 2;
 				}
 				// Highlight the duplicate word in the text area
-				// textArea.value = textArea.value.replace(
-				// 	new RegExp(word, 'g'), `<span class="highlight">${word}</span>`);
+				// textArea1.value = textArea1.value.replace(
+				// 	new RegExp(word, 'g'), `❗️${word}❗️️`);
+				// textArea2.value = textArea2.value.replace(
+				// 	new RegExp(word, 'g'), `❗️${word}❗️`);
+				// textArea3.value = textArea3.value.replace(
+				// 	new RegExp(word, 'g'), `❗️${word}❗️`);
 			} else {
 				uniqueWords.add(word);
 			}
@@ -83,5 +95,6 @@ export class Logic {
 		} else {
 			console.log('No duplicate words found.');
 		}
-	};
+
+	}
 }

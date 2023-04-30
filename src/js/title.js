@@ -21,5 +21,8 @@ export class TitleArea {
 		});
 	}
 
+	static cleanCharacterArea(area) {
+		area.innerHTML = '<span id="titleCharacters" className="black-text"> out of 30 </span>'
+	}
 
 }

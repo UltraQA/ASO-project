@@ -3501,7 +3501,7 @@ table span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
 }
 
 .row:after {
@@ -4784,7 +4784,6 @@ small {
   transform: scale(0);
   -webkit-transition: -webkit-transform 0.2s !important;
   transition: -webkit-transform 0.2s !important;
-  transition: transform 0.2s !important;
   transition: transform 0.2s, -webkit-transform 0.2s !important;
 }
 
@@ -4796,7 +4795,6 @@ small {
 .card-panel {
   -webkit-transition: -webkit-box-shadow 0.25s;
   transition: -webkit-box-shadow 0.25s;
-  transition: box-shadow 0.25s;
   transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
@@ -4811,7 +4809,6 @@ small {
   background-color: #fff;
   -webkit-transition: -webkit-box-shadow 0.25s;
   transition: -webkit-box-shadow 0.25s;
-  transition: box-shadow 0.25s;
   transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
   border-radius: 2px;
 }

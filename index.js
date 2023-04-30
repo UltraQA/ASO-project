@@ -26,15 +26,20 @@ Logic.setMaxLengthForTextArea(SubTitle.subTitle, 30, SubTitle.subTitleCharacters
 Logic.setMaxLengthForTextArea(KeyWords.keyWords, 100, KeyWords.keyWordsCharacters);
 
 KeyWords.showDuplicatesButton.addEventListener('click', () => {
-	Logic.showDuplicates(TitleArea.titleElement);
-	Logic.showDuplicates(SubTitle.subTitle);
-	Logic.showDuplicates(KeyWords.keyWords);
+	Logic.showDuplicatesForAllAreas(
+		TitleArea.titleElement,
+		SubTitle.subTitle,
+		KeyWords.keyWords
+	);
 });
 
 DuplicatesArea.cleanAllTextAreasButton.addEventListener('click', () => {
 	DuplicatesArea.cleanTextArea(TitleArea.titleElement);
 	DuplicatesArea.cleanTextArea(SubTitle.subTitle);
 	DuplicatesArea.cleanTextArea(KeyWords.keyWords);
+	TitleArea.cleanCharacterArea(TitleArea.titleCharacters);
+	SubTitle.cleanCharacterArea(SubTitle.subTitleCharacters);
+	KeyWords.cleanCharacterArea(KeyWords.keyWordsCharacters);
 	DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
 });
 

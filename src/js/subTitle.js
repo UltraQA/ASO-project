@@ -20,4 +20,8 @@ export class SubTitle {
 			this.subTitleWordsAmount.innerHTML = Logic.wordsAmount(this.subTitle, separator, separator2);
 		});
 	}
+
+	static cleanCharacterArea(area) {
+		area.innerHTML = '<span id="SubTitleCharacters" className="black-text"> out of 30 </span>'
+	}
 }

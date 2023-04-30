@@ -92,7 +92,7 @@ textarea {
 #titleText,
 #subTitleText {
     width: 55%;
-    height: 4em;
+    height: 2em;
     min-width: 240px;
 }
 
@@ -105,4 +105,14 @@ textarea {
 mark {
     background-color: red;
     color: black;
+}
+
+.row-special{
+    border-style: groove;
+    border-radius: 20px;
+    border-color: lightgray;
+}
+
+.highlight {
+    background-color: yellow;
 }
