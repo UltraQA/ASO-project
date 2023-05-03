@@ -3,8 +3,6 @@ body {
 }
 
 html {
-    /*height: 100%;*/
-    /* background: linear-gradient(45deg, #fafafa, #b0bec5); */
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -24,27 +22,21 @@ img {
 }
 
 .welcomeText {
-    /* background-image: url(/icons/welcomImg.png); */
-    /* background-color: #707070; */
     border-radius: 25px;
     height: 10em;
     display: none;
 }
 
 h1 {
-    /* color: #ffdf6c; */
     text-align: center;
     font-size: 3.2em;
     font-family: 'Teko', sans-serif;
-    /* min-width: 440px; */
 }
 
 #h4 {
-    /* color: #155c9ec7; */
     font-size: 1.875em;
     text-align: left;
     margin: 10px;
-    /* text-shadow: 2px 2px 5px red; */
 }
 
 #titleWordsAmount,
@@ -58,7 +50,6 @@ h1 {
 textarea {
     padding: 10px;
     border-radius: 15px;
-    /* background-color: #aec9c9; */
     margin-bottom: 10px;
 }
 
@@ -66,26 +57,17 @@ textarea {
     background-color: yellow;
 }
 
-
-/* #amountArea { */
-/* color: #ff5722; */
-/* } */
-
 .DuplicatesLine {
-    /* color: rgb(233, 23, 152); */
-    /* visibility: hidden; */
     opacity: 0;
     display: none;
 }
 
 #titleCharacters,
 #SubTitleCharacters {
-    /* color: black; */
     display: inline;
 }
 
 #keyWordcharacters {
-    /* color: black; */
     display: inline;
 }
 
@@ -107,10 +89,9 @@ mark {
     color: black;
 }
 
-.row-special{
-    border-style: groove;
+.row-special {
+    background-color: ghostwhite;
     border-radius: 20px;
-    border-color: lightgray;
 }
 
 .highlight {
