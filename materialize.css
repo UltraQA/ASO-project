@@ -2638,7 +2638,6 @@ a {
 /* 2dp elevation modified*/
 .z-depth-1,
 nav,
-.card-panel,
 .card,
 .toast,
 .btn,
@@ -4957,14 +4956,14 @@ small {
 }
 
 .card-panel {
-    -webkit-transition: -webkit-box-shadow 0.25s;
-    transition: -webkit-box-shadow 0.25s;
-    transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
-    padding: 24px;
+    /*-webkit-transition: -webkit-box-shadow 0.25s;*/
+    /*transition: -webkit-box-shadow 0.25s;*/
+    /*transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;*/
+    padding: 12px;
     margin: 0.5rem 0 1rem 0;
     border-radius: 2px;
     background-color: #fff;
-    height: 100%;
+    height: auto;
 }
 
 .card {

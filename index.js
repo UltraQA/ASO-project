@@ -26,6 +26,7 @@ Logic.setMaxLengthForTextArea(SubTitle.subTitle, 30, SubTitle.subTitleCharacters
 Logic.setMaxLengthForTextArea(KeyWords.keyWords, 100, KeyWords.keyWordsCharacters);
 
 KeyWords.showDuplicatesButton.addEventListener('click', () => {
+	DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
 	Logic.showDuplicatesForAllAreas(
 		TitleArea.titleElement,
 		SubTitle.subTitle,
