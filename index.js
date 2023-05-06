@@ -45,3 +45,5 @@ DuplicatesArea.cleanAllTextAreasButton.addEventListener('click', () => {
 
 
 
+
+

@@ -45,16 +45,13 @@ h1 {
     color: black;
     display: inline;
     position: absolute;
+    padding-left: 10px;
 }
 
 textarea {
     padding: 10px;
     border-radius: 15px;
     margin-bottom: 10px;
-}
-
-.highlight {
-    background-color: yellow;
 }
 
 .DuplicatesLine {
@@ -94,6 +91,6 @@ mark {
     border-radius: 20px;
 }
 
-.highlight {
-    background-color: yellow;
+.navBar{
+    margin-bottom: 20px;
 }

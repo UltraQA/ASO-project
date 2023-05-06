@@ -85,12 +85,16 @@ export class Logic {
 		// Output the duplicate words and their frequency
 		const duplicates = Object.entries(wordFrequency).filter(entry => entry[1] > 1);
 		if (duplicates.length > 0) {
-			console.log('Duplicate words found:');
+			// console.log('Duplicate words found:');
 			duplicates.forEach(([word, frequency]) => {
-				const duplicatesText = document.querySelector('#amountDuplicatesItems');
-				duplicatesText.innerHTML += `<span style="font-size: 24px; color: #000000">` + word + '(' + frequency + ') ';
+				if (word === '') {
+					console.log(`words: ${word}`);
+				} else {
+					const duplicatesText = document.querySelector('#amountDuplicatesItems');
+					duplicatesText.innerHTML += `<span style="font-size: 24px; color: #000000">` + word + '(' + frequency + ') ';
 
-				console.log(`"${word}" appears ${frequency} times`);
+					console.log(`"${word}" appears ${frequency} times`);
+				}
 			});
 		} else {
 			console.log('No duplicate words found.');
