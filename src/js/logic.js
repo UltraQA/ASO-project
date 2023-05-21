@@ -84,7 +84,7 @@ export class Logic {
 			// console.log('Duplicate words found:');
 			duplicates.forEach(([word, frequency]) => {
 				if (word === '') {
-					console.log(`words: ${word}`);
+					console.log(`No Duplicates yet!`);
 				} else {
 					const duplicatesText = document.querySelector('#amountDuplicatesItems');
 					duplicatesText.innerHTML += `<span style="font-size: 24px; color: #000000">` + word + '(' + frequency + ') ';
