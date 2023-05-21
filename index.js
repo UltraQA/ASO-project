@@ -38,9 +38,16 @@ DuplicatesArea.cleanAllTextAreasButton.addEventListener('click', () => {
 	DuplicatesArea.cleanTextArea(TitleArea.titleElement);
 	DuplicatesArea.cleanTextArea(SubTitle.subTitle);
 	DuplicatesArea.cleanTextArea(KeyWords.keyWords);
+
 	TitleArea.cleanCharacterArea(TitleArea.titleCharacters);
+	TitleArea.cleanTitleWordsAmount(TitleArea.titleWordsAmount);
+
 	SubTitle.cleanCharacterArea(SubTitle.subTitleCharacters);
+	SubTitle.cleanSubTitleWordsAmount(SubTitle.subTitleWordsAmount);
+
 	KeyWords.cleanCharacterArea(KeyWords.keyWordsCharacters);
+	KeyWords.cleanKeyWordsAmount(KeyWords.keyWordsAmount);
+
 	DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
 });
 

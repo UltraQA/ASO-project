@@ -4465,6 +4465,8 @@ nav {
 
 nav.nav-extended {
     height: auto;
+    margin-bottom: 20px;
+    border-radius: 25px;
 }
 
 nav.nav-extended .nav-wrapper {

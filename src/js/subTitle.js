@@ -21,7 +21,11 @@ export class SubTitle {
 		});
 	}
 
+	static cleanSubTitleWordsAmount(id){
+		return id.innerHTML = '0'
+	}
+
 	static cleanCharacterArea(area) {
-		area.innerHTML = '<span id="SubTitleCharacters" className="black-text"> out of 30 </span>'
+		return area.innerHTML = '0 out of 30'
 	}
 }

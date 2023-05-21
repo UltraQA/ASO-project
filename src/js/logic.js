@@ -13,7 +13,6 @@ export class Logic {
 		}
 		return count;
 	};
-
 	static maxLengthOfCharactersAmount(maxFieldLength, textFieldLength, elementId) {
 		let textLength = textFieldLength.value.length;
 		if (textLength > maxFieldLength) {
@@ -22,13 +21,11 @@ export class Logic {
 			return elementId.innerHTML = textLength + ' out of ' + maxFieldLength;
 		}
 	};
-
 	static setMaxLengthForTextArea(textArea, maxLength, charactersField) {
 		textArea.addEventListener('input', () => {
 			this.maxLengthOfCharactersAmount(maxLength, textArea, charactersField);
 		});
 	}
-
 	static splitString(str) {
 		const array = str.split(',');
 		let maxLength = 0;
@@ -39,7 +36,6 @@ export class Logic {
 		}
 		return array;
 	}
-
 	static showDuplicatesForAllAreas(titleArea, subTitleArea, keyWordsArea) {
 		// Get the text from the three textarea elements
 		const textArea1 = titleArea;

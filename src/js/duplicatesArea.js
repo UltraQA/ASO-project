@@ -7,10 +7,10 @@ export class DuplicatesArea {
 	}
 
 	static cleanTextArea(textArea) {
-		textArea.value = '';
+		return textArea.value = '';
 	}
 
 	static cleanDuplicatesArea(duplicatesArea) {
-		duplicatesArea.innerHTML = '';
+		return duplicatesArea.innerHTML = '';
 	}
 }

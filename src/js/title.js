@@ -21,8 +21,12 @@ export class TitleArea {
 		});
 	}
 
+	static cleanTitleWordsAmount(id){
+		return id.innerHTML = '0'
+	}
+
 	static cleanCharacterArea(area) {
-		area.innerHTML = '<span id="titleCharacters" className="black-text"> out of 30 </span>'
+		return area.innerHTML = '0 out of 30'
 	}
 
 }

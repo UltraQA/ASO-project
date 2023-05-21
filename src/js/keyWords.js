@@ -23,7 +23,11 @@ export class KeyWords {
 		});
 	}
 
+	static cleanKeyWordsAmount(id){
+		return id.innerHTML = '0'
+	}
+
 	static cleanCharacterArea(area) {
-		area.innerHTML = '<span id="keyWordCharacters" className="black-text"> out of 100 </span>'
+		area.innerHTML = '0 out of 100'
 	}
 }

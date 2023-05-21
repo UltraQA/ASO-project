@@ -87,6 +87,7 @@ mark {
 }
 
 .row-special {
+    margin-bottom: 10px;
     background-color: ghostwhite;
     border-radius: 20px;
 }
