@@ -2700,7 +2700,7 @@ nav,
 .divider {
     height: 1px;
     overflow: hidden;
-    background-color: #e0e0e0;
+    background-color: transparent;
 }
 
 blockquote {
@@ -5914,6 +5914,7 @@ body.keyboard-focused .dropdown-content li:focus {
     z-index: 1;
     -webkit-transition: 0.3s ease-out;
     transition: 0.3s ease-out;
+    border-radius: 25px;
 }
 
 .waves-effect .waves-ripple {

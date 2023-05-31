@@ -99,3 +99,8 @@ mark {
 .buttons{
     padding-bottom: 20px;
 }
+
+.hidden{
+    display: none;
+    visibility: hidden;
+}
