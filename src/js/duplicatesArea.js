@@ -1,16 +1,16 @@
 export class DuplicatesArea {
 
-	static cleanAllTextAreasButton = document.querySelector('#cleanAllTextAreasButton');
-	static duplicatesArea = document.querySelector('#amountDuplicatesItems');
+    static cleanAllTextAreasButton = document.querySelector('#cleanAllTextAreasButton');
+    static duplicatesArea = document.querySelector('#amountDuplicatesItems');
 
-	constructor() {
-	}
+    constructor() {
+    }
 
-	static cleanTextArea(textArea) {
-		return textArea.value = '';
-	}
+    static cleanTextArea(textArea) {
+        return textArea.value = '';
+    }
 
-	static cleanDuplicatesArea(duplicatesArea) {
-		return duplicatesArea.innerHTML = '';
-	}
+    static cleanDuplicatesArea(duplicatesArea) {
+        return duplicatesArea.innerHTML = '';
+    }
 }
