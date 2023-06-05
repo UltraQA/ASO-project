@@ -1,4 +1,4 @@
-import {Logic} from './logic.js';
+import {Logic} from '../logic.js';
 
 export class TitleArea {
 
@@ -21,12 +21,12 @@ export class TitleArea {
 		});
 	}
 
-	static cleanTitleWordsAmount(id){
-		return id.innerHTML = '0'
+	static cleanTitleWordsAmount(){
+		return this.titleWordsAmount.innerHTML = '0'
 	}
 
-	static cleanCharacterArea(area) {
-		return area.innerHTML = '0 out of 30'
+	static cleanCharacterArea() {
+		return this.titleCharacters.innerHTML = '0 out of 30'
 	}
 
 }

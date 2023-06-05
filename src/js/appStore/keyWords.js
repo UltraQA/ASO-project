@@ -1,12 +1,10 @@
-import {Logic} from './logic.js';
+import {Logic} from '../logic.js';
 
 export class KeyWords {
 
 	static keyWords = document.querySelector('#keyWords');
 	static keyWordsAmount = document.querySelector('#keyWordsAmount');
 	static keyWordsCharacters = document.querySelector('#keyWordCharacters');
-	static showDuplicatesButton = document.querySelector('#showDuplicatesButton');
-
 
 	constructor() {
 	}
@@ -23,11 +21,11 @@ export class KeyWords {
 		});
 	}
 
-	static cleanKeyWordsAmount(id){
-		return id.innerHTML = '0'
+	static cleanKeyWordsAmount(){
+		return this.keyWordsAmount.innerHTML = '0'
 	}
 
-	static cleanCharacterArea(area) {
-		area.innerHTML = '0 out of 100'
+	static cleanCharacterArea() {
+		return this.keyWordsCharacters.innerHTML = '0 out of 100'
 	}
 }
