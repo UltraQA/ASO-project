@@ -1,11 +1,16 @@
-import {TitleArea} from './src/js/title.js';
-import {SubTitle} from './src/js/subTitle.js';
-import {KeyWords} from './src/js/keyWords.js';
-import {DuplicatesArea} from './src/js/duplicatesArea.js';
+import {TitleArea} from './src/js/appStore/title.js';
+import {SubTitle} from './src/js/appStore/subTitle.js';
+import {KeyWords} from './src/js/appStore/keyWords.js';
+import {DuplicatesArea} from './src/js/appStore/duplicatesArea.js';
 import {Logic} from './src/js/logic.js';
 import {NavBar} from "./src/js/navBar.js";
 import {DeepLinks} from "./src/js/deepLinks.js"
-
+import {NameField} from "./src/js/googlePlay/nameField.js";
+import {Log} from "./src/js/log.js";
+import {DuplicatesAreaGP} from "./src/js/googlePlay/duplicatesAreaGP.js";
+import {Description} from "./src/js/googlePlay/description.js";
+import {ShortDescription} from "./src/js/googlePlay/shortDescription.js";
+//App Store
 TitleArea.addWordsAmount();
 SubTitle.addWordsAmount();
 KeyWords.addWordsAmount();
@@ -14,7 +19,16 @@ Logic.setMaxLengthForTextArea(TitleArea.titleElement, 30, TitleArea.titleCharact
 Logic.setMaxLengthForTextArea(SubTitle.subTitle, 30, SubTitle.subTitleCharacters);
 Logic.setMaxLengthForTextArea(KeyWords.keyWords, 100, KeyWords.keyWordsCharacters);
 
-KeyWords.showDuplicatesButton.addEventListener('click', () => {
+//Google Play
+NameField.addWordsAmount();
+Description.addWordsAmount();
+ShortDescription.addWordsAmount();
+
+Logic.setMaxLengthForTextArea(NameField.nameField, 30, NameField.nameCharacterAmount);
+Logic.setMaxLengthForTextArea(ShortDescription.shortDescription, 80, ShortDescription.shortDescriptionChar);
+Logic.setMaxLengthForTextArea(Description.description, 4000, Description.descriptionChar);
+
+DuplicatesArea.showDuplicatesButton.addEventListener('click', () => {
     DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
     Logic.showDuplicatesForAllAreas(
         TitleArea.titleElement,
@@ -23,23 +37,53 @@ KeyWords.showDuplicatesButton.addEventListener('click', () => {
     );
 });
 
+//App Store
 DuplicatesArea.cleanAllTextAreasButton.addEventListener('click', () => {
     DuplicatesArea.cleanTextArea(TitleArea.titleElement);
     DuplicatesArea.cleanTextArea(SubTitle.subTitle);
     DuplicatesArea.cleanTextArea(KeyWords.keyWords);
 
-    TitleArea.cleanCharacterArea(TitleArea.titleCharacters);
-    TitleArea.cleanTitleWordsAmount(TitleArea.titleWordsAmount);
+    TitleArea.cleanTitleWordsAmount()
+    TitleArea.cleanCharacterArea();
 
-    SubTitle.cleanCharacterArea(SubTitle.subTitleCharacters);
-    SubTitle.cleanSubTitleWordsAmount(SubTitle.subTitleWordsAmount);
+    SubTitle.cleanSubTitleWordsAmount();
+    SubTitle.cleanCharacterArea();
 
-    KeyWords.cleanCharacterArea(KeyWords.keyWordsCharacters);
-    KeyWords.cleanKeyWordsAmount(KeyWords.keyWordsAmount);
+    KeyWords.cleanKeyWordsAmount();
+    KeyWords.cleanCharacterArea();
 
     DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesArea);
 });
 
+//Google Play
+DuplicatesArea.showDuplicatesButtonGP.addEventListener('click', () => {
+    DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesAreaGP);
+    Logic.showDuplicatesForAllAreas(
+        NameField.nameField,
+        ShortDescription.shortDescription,
+        Description.description,
+        'Google Play'
+    );
+});
+
+DuplicatesAreaGP.cleanAllTextAreaGP.addEventListener('click', () => {
+    DuplicatesAreaGP.cleanTextAreaGP(NameField.nameField);
+    DuplicatesAreaGP.cleanTextAreaGP(ShortDescription.shortDescription);
+    DuplicatesAreaGP.cleanTextAreaGP(Description.description);
+
+    NameField.cleanNameWordsAmount();
+    NameField.cleanNameCharacters();
+
+    ShortDescription.cleanShortDescriptionWordsAmount();
+    ShortDescription.cleanShortDescriptionCharacters();
+
+    Description.cleanDescriptionWords();
+    Description.cleanDescriptionCharacter();
+
+    DuplicatesAreaGP.cleanDuplicatesAreaGP(DuplicatesAreaGP.duplicatesAreaGP);
+})
+
+//NavBar
 NavBar.googlePlay.addEventListener('click', () => {
     NavBar.changeVisibilityToGooglePlay();
 })
@@ -50,7 +94,7 @@ NavBar.appStore.addEventListener('click', () => {
 NavBar.deepLinks.addEventListener('click', () => {
     NavBar.changeVisibilityToDeepLinks();
 })
-
+//DeepLinks
 DeepLinks.generateLinkBtn.addEventListener('click', () => {
     console.log(DeepLinks.getRawLink());
     DeepLinks.generateYouTubeDeepLink(DeepLinks.getRawLink());
