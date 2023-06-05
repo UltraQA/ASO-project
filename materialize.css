@@ -3491,8 +3491,8 @@ table span.badge {
 }
 
 .col .row {
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
+    /*margin-left: -0.75rem;*/
+    /*margin-right: -0.75rem;*/
 }
 
 .section {
@@ -6795,7 +6795,7 @@ textarea.materialize-textarea + label:after,
 .input-field {
     position: relative;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    /*margin-bottom: 1rem;*/
 }
 
 .input-field.inline {
