@@ -40,11 +40,12 @@ export class Logic {
         return array;
     }
 
-    static showDuplicatesForAllAreas(titleArea, subTitleArea, keyWordsArea) {
+    static showDuplicatesForAllAreas(firstFiled, secondField, thirdField, store) {
+        let duplicatesText;
         // Get the text from the three textarea elements
-        const textArea1 = titleArea;
-        const textArea2 = subTitleArea;
-        const textArea3 = keyWordsArea;
+        const textArea1 = firstFiled;
+        const textArea2 = secondField;
+        const textArea3 = thirdField;
         const text1 = textArea1.value;
         const text2 = textArea2.value;
         const text3 = textArea3.value;
@@ -83,7 +84,11 @@ export class Logic {
                 if (word === '') {
                     console.log(`No Duplicates yet!`);
                 } else {
-                    const duplicatesText = document.querySelector('#amountDuplicatesItems');
+                    if (store !== 'Google Play') {
+                        duplicatesText = document.querySelector('#amountDuplicatesItems');
+                    } else {
+                        duplicatesText = document.querySelector('#amountDuplicatesItemsGP');
+                    }
                     duplicatesText.innerHTML += `<span style="font-size: 24px; color: #000000">` + word + '(' + frequency + ') ';
 
                     console.log(`"${word}" appears ${frequency} times`);
@@ -93,5 +98,13 @@ export class Logic {
             console.log('No duplicate words found.');
         }
 
+    }
+
+    static cleanWordsAmount(id){
+        return id.innerHTML = '0'
+    }
+
+    static cleanCharacterArea(area) {
+        area.innerHTML = '0 out of 100'
     }
 }
