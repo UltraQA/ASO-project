@@ -7,7 +7,6 @@ import {NavBar} from "./src/js/navBar.js";
 import {DeepLinks} from "./src/js/deepLinks.js"
 import {NameField} from "./src/js/googlePlay/nameField.js";
 import {Log} from "./src/js/log.js";
-import {DuplicatesAreaGP} from "./src/js/googlePlay/duplicatesAreaGP.js";
 import {Description} from "./src/js/googlePlay/description.js";
 import {ShortDescription} from "./src/js/googlePlay/shortDescription.js";
 //App Store
@@ -66,10 +65,10 @@ DuplicatesArea.showDuplicatesButtonGP.addEventListener('click', () => {
     );
 });
 
-DuplicatesAreaGP.cleanAllTextAreaGP.addEventListener('click', () => {
-    DuplicatesAreaGP.cleanTextAreaGP(NameField.nameField);
-    DuplicatesAreaGP.cleanTextAreaGP(ShortDescription.shortDescription);
-    DuplicatesAreaGP.cleanTextAreaGP(Description.description);
+DuplicatesArea.cleanAllTextAreasButtonGP.addEventListener('click', () => {
+    DuplicatesArea.cleanTextArea(NameField.nameField);
+    DuplicatesArea.cleanTextArea(ShortDescription.shortDescription);
+    DuplicatesArea.cleanTextArea(Description.description);
 
     NameField.cleanNameWordsAmount();
     NameField.cleanNameCharacters();
@@ -80,7 +79,7 @@ DuplicatesAreaGP.cleanAllTextAreaGP.addEventListener('click', () => {
     Description.cleanDescriptionWords();
     Description.cleanDescriptionCharacter();
 
-    DuplicatesAreaGP.cleanDuplicatesAreaGP(DuplicatesAreaGP.duplicatesAreaGP);
+    DuplicatesArea.cleanDuplicatesArea(DuplicatesArea.duplicatesAreaGP);
 })
 
 //NavBar
