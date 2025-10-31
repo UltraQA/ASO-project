@@ -12,17 +12,24 @@ export class DeepLinks {
         return this.rawLinkInput.value;
     }
 
-    static generateYouTubeDeepLink(url) {
-        const videoId = this.extractYouTubeVideoId(url);
+    static generateYouTubeDeepLink(input) {
+        const videoId = this.extractYouTubeVideoId(input);
+        const timeSuffix = this.extractTimestampSuffix(input); // like &t=123s or ''
+        const timeQuery = this.extractTimestampQuery(input);   // like ?t=123s or '' (for full https URLs)
 
         if (videoId) {
-            const deepLink = `youtube://watch?v=${videoId}`;
-            const shortLink = `https://youtu.be/${videoId}`;
-            const androidLink = this.extractAndroidLink(deepLink);
+            // iOS/Universal link: use full https watch URL to trigger Universal Links in Safari and Chrome on iOS
+            const deepLink = `https://www.youtube.com/watch?v=${videoId}` + (timeQuery ? timeQuery : '');
 
-            console.log("Generated Deep Link:", deepLink);
-            console.log("Shortened Link:", shortLink);
-            console.log("Android Link:", shortLink);
+            // Short link for sharing/opening in browser
+            const shortLink = `https://youtu.be/${videoId}` + (timeQuery ? timeQuery : '');
+
+            // Android intent with https scheme and full authority; use full https fallback
+            const androidLink = this.buildAndroidIntent(videoId, `https://www.youtube.com/watch?v=${videoId}${timeQuery ? timeQuery : ''}`);
+
+            console.log("iOS/Universal Link:", deepLink);
+            console.log("Short Link:", shortLink);
+            console.log("Android Intent Link:", androidLink);
 
             this.readyLinkInput.value = deepLink;
             this.readyShortLinkInput.value = shortLink;
@@ -30,7 +37,7 @@ export class DeepLinks {
 
             const userAgent = navigator.userAgent;
             // if (this.isAndroid(userAgent)) {
-            //     this.openAndroidApp(deepLink);
+            //     this.openAndroidApp(videoId);
             // } else if (this.isIOS(userAgent)) {
             //     this.openIOSApp(deepLink);
             // } else {
@@ -41,15 +48,98 @@ export class DeepLinks {
         }
     }
 
-    static extractYouTubeVideoId(url) {
-        const match = url.match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=|youtu\.be\/|embed\/|.*[?&]vi=|.*[?&]v%3D))([^"&?/ ]{11})/);
-        return match ? match[1] : null;
+    static extractYouTubeVideoId(input) {
+        if (!input) return null;
+        try {
+            const url = new URL(input.trim());
+            const host = url.hostname.replace(/^www\./i, '').toLowerCase();
+            if (host === 'youtu.be') {
+                // Path: /VIDEOID
+                const id = url.pathname.split('/').filter(Boolean)[0] || '';
+                return this.validateYouTubeId(id);
+            }
+            if (host === 'youtube.com' || host.endsWith('.youtube.com')) {
+                // Standard watch URL: v param
+                const v = url.searchParams.get('v');
+                if (v) return this.validateYouTubeId(v);
+                // Shorts: /shorts/VIDEOID
+                const parts = url.pathname.split('/').filter(Boolean);
+                const shortsIdx = parts.indexOf('shorts');
+                if (shortsIdx !== -1 && parts[shortsIdx + 1]) {
+                    return this.validateYouTubeId(parts[shortsIdx + 1]);
+                }
+                // Embed: /embed/VIDEOID
+                const embedIdx = parts.indexOf('embed');
+                if (embedIdx !== -1 && parts[embedIdx + 1]) {
+                    return this.validateYouTubeId(parts[embedIdx + 1]);
+                }
+            }
+        } catch (e) {
+            // Not a URL; try regex fallback (e.g., raw ID)
+            const maybeId = (input || '').trim();
+            return this.validateYouTubeId(maybeId);
+        }
+        return null;
     }
 
-    static extractAndroidLink(deepLink) {
-        const androidAppPackage = "com.google.android.youtube";
-        const androidIntentUrl = `intent://${deepLink}#Intent;package=${androidAppPackage};scheme=${deepLink};end;`;
-        return androidIntentUrl;
+    static validateYouTubeId(id) {
+        if (!id) return null;
+        const clean = id.replace(/[^0-9A-Za-z_-]/g, '').slice(0, 11);
+        return clean.length === 11 ? clean : null;
+    }
+
+    static parseTimeToSeconds(t) {
+        if (!t) return 0;
+        // Accept formats like 90, 90s, 1m30s, 1h2m3s
+        if (/^\d+$/.test(t)) return parseInt(t, 10);
+        let total = 0;
+        const h = /([0-9]+)h/.exec(t);
+        const m = /([0-9]+)m/.exec(t);
+        const s = /([0-9]+)s?/.exec(t.replace(/.*([0-9]+s).*/, '$1'));
+        if (h) total += parseInt(h[1], 10) * 3600;
+        if (m) total += parseInt(m[1], 10) * 60;
+        if (!h && !m) {
+            // If only seconds provided possibly with s
+            const onlyS = /^([0-9]+)s$/.exec(t);
+            if (onlyS) total += parseInt(onlyS[1], 10);
+        } else if (s) {
+            total += parseInt(s[1], 10);
+        }
+        if (!isFinite(total)) return 0;
+        return total;
+    }
+
+    static extractTimestampSuffix(input) {
+        // returns string starting with & like &t=123s or ''
+        try {
+            const url = new URL((input || '').trim());
+            const sp = url.searchParams;
+            let t = sp.get('t') || sp.get('start') || '';
+            if (!t && url.hash) {
+                const hash = url.hash.replace(/^#/, '');
+                const m = /(?:t=|start=)([^&]+)/.exec(hash);
+                if (m) t = m[1];
+            }
+            const sec = this.parseTimeToSeconds(t);
+            return sec > 0 ? `&t=${sec}s` : '';
+        } catch (e) {
+            return '';
+        }
+    }
+
+    static extractTimestampQuery(input) {
+        // returns string starting with ? like ?t=123s or ''
+        const suf = this.extractTimestampSuffix(input);
+        return suf ? suf.replace(/^&/, '?') : '';
+    }
+
+    static buildAndroidIntent(videoId, fallbackUrl) {
+        const androidAppPackage = 'com.google.android.youtube';
+        // Use https scheme with full authority to improve Android intent reliability
+        const scheme = 'https';
+        const authorityAndPath = `www.youtube.com/watch?v=${videoId}`;
+        const fallback = encodeURIComponent(fallbackUrl || `https://www.youtube.com/watch?v=${videoId}`);
+        return `intent://${authorityAndPath}#Intent;scheme=${scheme};package=${androidAppPackage};S.browser_fallback_url=${fallback};end;`;
     }
 
     static isAndroid(userAgent) {
@@ -60,11 +150,9 @@ export class DeepLinks {
         return /iPhone|iPad|iPod/i.test(userAgent);
     }
 
-    static openAndroidApp(deepLink) {
-        // Replace with the Android app package name or custom URL scheme
-        const androidAppPackage = "com.google.android.youtube";
-        const androidIntentUrl = `intent://${deepLink}#Intent;package=${androidAppPackage};scheme=${deepLink};end;`;
-        window.location.href = androidIntentUrl;
+    static openAndroidApp(videoId) {
+        const url = this.buildAndroidIntent(videoId);
+        window.location.href = url;
     }
 
     static openIOSApp(deepLink) {
@@ -73,7 +161,9 @@ export class DeepLinks {
 
     static openURLInNewTab(url) {
         const newTab = window.open(url, '_blank');
-        newTab.focus();
+        if (newTab && typeof newTab.focus === 'function') {
+            newTab.focus();
+        }
     }
 
 }

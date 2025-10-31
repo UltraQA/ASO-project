@@ -90,6 +90,17 @@ mark {
     color: black;
 }
 
+/* Overlay-based highlighting for duplicates in textareas */
+textarea.with-highlight {
+    color: transparent !important; /* hide original text while keeping caret visible */
+    caret-color: black; /* ensure caret stays visible */
+}
+
+.highlight-mirror {
+    /* base styles are set inline from JS to match the textarea */
+    z-index: 0;
+}
+
 .row-special {
     margin-bottom: 10px;
     background-color: ghostwhite;

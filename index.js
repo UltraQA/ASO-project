@@ -94,9 +94,11 @@ NavBar.deepLinks.addEventListener('click', () => {
     NavBar.changeVisibilityToDeepLinks();
 })
 //DeepLinks
-DeepLinks.generateLinkBtn.addEventListener('click', () => {
-    console.log(DeepLinks.getRawLink());
-    DeepLinks.generateYouTubeDeepLink(DeepLinks.getRawLink());
+DeepLinks.generateLinkBtn.addEventListener('click', (e) => {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    const raw = DeepLinks.getRawLink();
+    console.log(raw);
+    DeepLinks.generateYouTubeDeepLink(raw);
 })
 
 

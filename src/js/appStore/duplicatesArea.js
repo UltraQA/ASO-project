@@ -1,3 +1,5 @@
+import {Logic} from '../logic.js';
+
 export class DuplicatesArea {
 
     static cleanAllTextAreasButton = document.querySelector('#cleanAllTextAreasButton');
@@ -11,7 +13,11 @@ export class DuplicatesArea {
     }
 
     static cleanTextArea(textArea) {
-        return textArea.value = '';
+        if (!textArea) return '';
+        textArea.value = '';
+        // Also clear highlight overlays
+        try { Logic.clearHighlights(textArea); } catch (e) {}
+        return '';
     }
 
     static cleanDuplicatesArea(duplicatesArea) {
